@@ -1,9 +1,9 @@
 import {Image} from './data/types';
 
-export const Header = (data: {props: Image})=> (
+export const Header = (props: Image)=> (
   <div>
     <div className="film-card__bg">
-      <img src={data.props.src} alt={data.props.alt}/>
+      <img src={props.src} alt={props.alt}/>
     </div>
 
     <h1 className="visually-hidden">WTW</h1>

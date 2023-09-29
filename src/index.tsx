@@ -14,6 +14,6 @@ const props = {
 
 root.render(
   <React.StrictMode>
-    <App props={props}/>
+    <App filmCardData={props.filmCardData} catalogFilmCards={props.catalogFilmCards}/>
   </React.StrictMode>
 );

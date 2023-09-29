@@ -5,10 +5,9 @@ export const MoviePage = () => (
   <div>
     <section className="film-card film-card--full">
       <div>
-        <Header props={{
-          src: 'img/bg-the-grand-budapest-hotel.jpg',
-          alt: 'The Grand Budapest Hotel',
-        }}
+        <Header
+          src='img/bg-the-grand-budapest-hotel.jpg'
+          alt='The Grand Budapest Hotel'
         />
 
         <div className="film-card__wrap">

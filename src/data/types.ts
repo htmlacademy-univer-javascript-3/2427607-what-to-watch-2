@@ -9,14 +9,15 @@ export type Image = {
 }
 
 export type FilmCardProps = {
-  bgImage: Image;
-  posterImage: Image;
+  bgImage: string;
+  posterImage: string;
   title: string;
   genre: string;
   year: number;
 }
 
 export type CatalogFilmCardProps = {
-  image: Image;
+  id: number;
+  image: string;
   title: string;
 };

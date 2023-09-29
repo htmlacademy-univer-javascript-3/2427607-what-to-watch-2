@@ -6,11 +6,17 @@ import {CatalogGenresList} from './CatalogGenresList';
 import {CatalogFilmsList} from './CatalogFilmsList';
 import {CommonProps} from '../data/types';
 
-export const MainPage = (data: {props: CommonProps})=>(
+export const MainPage = (props: CommonProps)=>(
   <div>
     <section className="film-card">
-      <Header props={data.props.filmCardData.bgImage}/>
-      <FilmCard props={data.props.filmCardData}/>
+      <Header src={props.filmCardData.bgImage} alt={props.filmCardData.title}/>
+      <FilmCard
+        title={props.filmCardData.title}
+        bgImage={props.filmCardData.bgImage}
+        genre={props.filmCardData.genre}
+        year={props.filmCardData.year}
+        posterImage={props.filmCardData.posterImage}
+      />
     </section>
 
     <div className="page-content">
@@ -19,7 +25,7 @@ export const MainPage = (data: {props: CommonProps})=>(
 
         <CatalogGenresList />
 
-        <CatalogFilmsList films={data.props.catalogFilmCards}/>
+        <CatalogFilmsList films={props.catalogFilmCards}/>
 
         <ShowMoreButton/>
       </section>

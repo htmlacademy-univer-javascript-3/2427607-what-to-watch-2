@@ -1,138 +1,73 @@
 import {CatalogFilmCardProps, FilmCardProps} from './types';
 
 export const filmCardData: FilmCardProps = {
-  bgImage: {
-    src: 'img/bg-the-grand-budapest-hotel.jpg',
-    alt: 'The Grand Budapest Hotel',
-  },
-  posterImage: {
-    src: 'img/the-grand-budapest-hotel-poster.jpg',
-    alt: 'The Grand Budapest Hotel poster',
-  },
+  bgImage:
+    'img/bg-the-grand-budapest-hotel.jpg',
+  posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
   title: 'The Grand Budapest Hotel',
   genre: 'Drama',
   year: 2014
 };
 
 export const catalogFilmCards: CatalogFilmCardProps[] = [
-  {image: {
-    src:'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
-    alt:'Fantastic Beasts: The Crimes of Grindelwald',
+  {id: 0, image: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
+    title:'Fantastic Beasts: The Crimes of Grindelwald'
   },
-  title:'Fantastic Beasts: The Crimes of Grindelwald'
+  {id: 1, image: 'img/bohemian-rhapsody.jpg',
+    title:'Bohemian Rhapsody'
   },
-  {image: {
-    src:'img/bohemian-rhapsody.jpg',
-    alt:'Bohemian Rhapsody',
+  {id: 2, image: 'img/macbeth.jpg',
+    title: 'Macbeth'
   },
-  title:'Bohemian Rhapsody'
+  {id: 3, image: 'img/aviator.jpg',
+    title: 'Aviator'
   },
-  {image: {
-    src: 'img/macbeth.jpg',
-    alt: 'Macbeth',
+  {id: 4, image: 'img/we-need-to-talk-about-kevin.jpg',
+    title: 'We need to talk about Kevin'
   },
-  title: 'Macbeth'
+  {id: 5, image: 'img/what-we-do-in-the-shadows.jpg',
+    title: 'What We Do in the Shadows'
   },
-  {image: {
-    src: 'img/aviator.jpg',
-    alt: 'Aviator',
+  {id: 6, image:'img/revenant.jpg' ,
+    title: 'Revenant'
   },
-  title: 'Aviator'
+  {id: 7, image: 'img/johnny-english.jpg',
+    title: 'Johnny English'
   },
-  {image: {
-    src: 'img/we-need-to-talk-about-kevin.jpg',
-    alt: 'We need to talk about Kevin',
+  {id: 8, image: 'img/shutter-island.jpg',
+    title: 'Shutter Island'
   },
-  title: 'We need to talk about Kevin'
+  {id: 9, image: 'img/pulp-fiction.jpg',
+    title: 'Pulp Fiction'
   },
-  {image: {
-    src: 'img/what-we-do-in-the-shadows.jpg',
-    alt: 'What We Do in the Shadows',
+  {id: 10, image: 'img/no-country-for-old-men.jpg',
+    title: 'No Country for Old Men'
   },
-  title: 'What We Do in the Shadows'
+  {id: 11, image: 'img/snatch.jpg',
+    title:'Snatch'
   },
-  {image: {
-    src: 'img/revenant.jpg',
-    alt: 'Revenant',
+  {id: 12, image: 'img/moonrise-kingdom.jpg',
+    title:'Moonrise Kingdom'
   },
-  title: 'Revenant'
+  {id: 13, image: 'img/seven-years-in-tibet.jpg',
+    title: 'Seven Years in Tibet'
   },
-  {image: {
-    src: 'img/johnny-english.jpg',
-    alt: 'Johnny English',
+  {id:14, image: 'img/midnight-special.jpg',
+    title: 'Midnight Special'
   },
-  title: 'Johnny English'
+  {id:15, image: 'img/war-of-the-worlds.jpg',
+    title: 'War of the Worlds'
   },
-  {image: {
-    src: 'img/shutter-island.jpg',
-    alt: 'Shutter Island',
+  {id: 16,image: 'img/dardjeeling-limited.jpg',
+    title: 'Dardjeeling Limited'
   },
-  title: 'Shutter Island'
+  {id: 17, image: 'img/orlando.jpg',
+    title: 'Orlando'
   },
-  {image: {
-    src: 'img/pulp-fiction.jpg',
-    alt: 'Pulp Fiction',
+  {id: 18, image: 'img/mindhunter.jpg',
+    title: 'Mindhunter'
   },
-  title: 'Pulp Fiction'
-  },
-  {image: {
-    src: 'img/no-country-for-old-men.jpg',
-    alt: 'No Country for Old Men',
-  },
-  title: 'No Country for Old Men'
-  },
-  {image: {
-    src:'img/snatch.jpg',
-    alt:'Snatch',
-  },
-  title:'Snatch'
-  },
-  {image: {
-    src:'img/moonrise-kingdom.jpg',
-    alt:'Moonrise Kingdom',
-  },
-  title:'Moonrise Kingdom'
-  },
-  {image: {
-    src: 'img/seven-years-in-tibet.jpg',
-    alt: 'Seven Years in Tibet',
-  },
-  title: 'Seven Years in Tibet'
-  },
-  {image: {
-    src:'img/midnight-special.jpg',
-    alt: 'Midnight Special',
-  },
-  title: 'Midnight Special'
-  },
-  {image: {
-    src:'img/war-of-the-worlds.jpg',
-    alt: 'War of the Worlds',
-  },
-  title: 'War of the Worlds'
-  },
-  {image: {
-    src: 'img/dardjeeling-limited.jpg',
-    alt: 'Dardjeeling Limited',
-  },
-  title: 'Dardjeeling Limited'
-  },
-  {image: {
-    src: 'img/orlando.jpg',
-    alt: 'Orlando',
-  },
-  title: 'Orlando'
-  },
-  {image: {
-    src: 'img/mindhunter.jpg',
-    alt: 'Mindhunter',
-  },
-  title: 'Mindhunter'
-  },
-  {image: {
-    src: 'img/midnight-special.jpg',
-    alt: 'Midnight Special',
-  },
-  title: 'Midnight Special'
+  {id: 19, image: 'img/midnight-special.jpg',
+    title: 'Midnight Special'
   },
 ];

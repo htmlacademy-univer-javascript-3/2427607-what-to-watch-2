@@ -1,8 +1,8 @@
 import {MainPage} from './MainPage/MainPage';
 import {CommonProps} from './data/types';
 
-export const App = (data: {props: CommonProps})=> (
+export const App = (props: CommonProps)=> (
   <div>
-    <MainPage props={data.props}/>
+    <MainPage filmCardData={props.filmCardData} catalogFilmCards={props.catalogFilmCards} />
   </div>
 );
