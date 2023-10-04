@@ -1,9 +1,9 @@
-import {Header} from '../Header';
-import {Footer} from '../Footer';
-import {FilmCard} from './FilmCard';
+import {Header} from '../header';
+import {Footer} from '../footer';
+import {FilmCard} from './film-card';
 import {ShowMoreButton} from '../buttons/ShowMoreButton';
-import {CatalogGenresList} from './CatalogGenresList';
-import {CatalogFilmsList} from './CatalogFilmsList';
+import {CatalogGenresList} from './catalog-genres-list';
+import {CatalogFilmsList} from './catalog-films-list';
 import {CommonProps} from '../data/types';
 
 export const MainPage = (props: CommonProps)=>(

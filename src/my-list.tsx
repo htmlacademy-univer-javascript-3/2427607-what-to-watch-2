@@ -1,5 +1,5 @@
-import {Footer} from './Footer';
-import {Logo} from './Logo';
+import {Footer} from './footer';
+import {Logo} from './logo';
 
 export const MyList = ()=> (
   <div className="user-page">

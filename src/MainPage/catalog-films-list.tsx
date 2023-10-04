@@ -1,4 +1,4 @@
-import {CatalogFilmsCard} from './CatalogFilmsCard';
+import {CatalogFilmsCard} from './catalog-films-card';
 import {CatalogFilmCardProps} from '../data/types';
 
 export const CatalogFilmsList = (props: {films: CatalogFilmCardProps[]}) => (

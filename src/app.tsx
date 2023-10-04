@@ -1,4 +1,4 @@
-import {MainPage} from './MainPage/MainPage';
+import {MainPage} from './MainPage/main-page';
 import {CommonProps} from './data/types';
 
 export const App = (props: CommonProps)=> (
