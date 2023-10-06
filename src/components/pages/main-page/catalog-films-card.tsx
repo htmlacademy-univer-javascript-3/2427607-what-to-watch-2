@@ -1,4 +1,4 @@
-import {CatalogFilmCardProps} from '../data/types';
+import {CatalogFilmCardProps} from '../../../data/types';
 
 export const CatalogFilmsCard = (props: CatalogFilmCardProps)=> (
   <article className="small-film-card catalog__films-card">

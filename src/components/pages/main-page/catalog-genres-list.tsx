@@ -13,11 +13,11 @@ export const CatalogGenresList = ()=> {
   return (
     <ul className="catalog__genres-list">
       <li className="catalog__genres-item catalog__genres-item--active">
-        <a href="src#" className="catalog__genres-link">All genres</a>
+        <a href="src/components/index#" className="catalog__genres-link">All genres</a>
       </li>
       {allGenres.map((genre) => (
         <li key={genre} className="catalog__genres-item">
-          <a href="src#" className="catalog__genres-link">{genre}</a>
+          <a href="src/components/index#" className="catalog__genres-link">{genre}</a>
         </li>))}
     </ul>
   );

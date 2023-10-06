@@ -1,5 +1,5 @@
-import {Footer} from './footer';
-import {Logo} from './logo';
+import {Footer} from '../../footer';
+import {Logo} from '../../logo';
 
 export const SignIn = () => (
   <div className="user-page">
@@ -10,7 +10,7 @@ export const SignIn = () => (
     </header>
 
     <div className="sign-in user-page__content">
-      <form action="#" className="sign-in__form">
+      <form action="src/components/index#" className="sign-in__form">
         <div className="sign-in__fields">
           <div className="sign-in__field">
             <input className="sign-in__input" type="email" placeholder="Email address" name="user-email"

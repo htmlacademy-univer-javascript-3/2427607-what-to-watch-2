@@ -1,6 +1,6 @@
 export const Player = ()=> (
   <div className="player">
-    <video src="#" className="player__video" poster="img/player-poster.jpg"></video>
+    <video src="src#" className="player__video" poster="img/player-poster.jpg"></video>
 
     <button type="button" className="player__exit">Exit</button>
 
