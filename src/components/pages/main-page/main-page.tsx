@@ -1,15 +1,20 @@
-import {Header} from '../Header';
-import {Footer} from '../Footer';
-import {FilmCard} from './FilmCard';
-import {ShowMoreButton} from '../buttons/ShowMoreButton';
-import {CatalogGenresList} from './CatalogGenresList';
-import {CatalogFilmsList} from './CatalogFilmsList';
-import {CommonProps} from '../data/types';
+import {Header} from '../../header';
+import {Footer} from '../../footer';
+import {FilmCard} from './film-card';
+import {ShowMoreButton} from '../../buttons/show-more-button';
+import {CatalogGenresList} from './catalog-genres-list';
+import {CatalogFilmsList} from './catalog-films-list';
+import {CommonProps} from '../../../data/types';
 
 export const MainPage = (props: CommonProps)=>(
   <div>
     <section className="film-card">
-      <Header src={props.filmCardData.bgImage} alt={props.filmCardData.title}/>
+      <div className="film-card__bg">
+        <img src={props.filmCardData.bgImage} alt={props.filmCardData.title}/>
+      </div>
+
+      <h1 className="visually-hidden">WTW</h1>
+      <Header classname="film-card__head"/>
       <FilmCard
         title={props.filmCardData.title}
         bgImage={props.filmCardData.bgImage}
