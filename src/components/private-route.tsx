@@ -6,7 +6,7 @@ type PrivateRouteProps = {
 };
 
 export const PrivateRoute = ({children}: PrivateRouteProps): JSX.Element => {
-  const hasAccess = false;
+  const hasAccess = true;
 
   return hasAccess ? children : <Navigate to={'/login'} />;
 };

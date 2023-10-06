@@ -5,12 +5,11 @@ export const SignIn = () => (
   <div className="user-page">
     <header className="page-header user-page__head">
       <Logo/>
-
       <h1 className="page-title user-page__title">Sign in</h1>
     </header>
 
     <div className="sign-in user-page__content">
-      <form action="src/components/index#" className="sign-in__form">
+      <form action="src/index#" className="sign-in__form">
         <div className="sign-in__fields">
           <div className="sign-in__field">
             <input className="sign-in__input" type="email" placeholder="Email address" name="user-email"

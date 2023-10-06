@@ -1,5 +1,5 @@
-import { AddToListButton} from '../../buttons/AddToList';
-import {PlayButton} from '../../buttons/Play';
+import { AddToListButton} from '../../buttons/add-to-list-button';
+import {PlayButton} from '../../buttons/play-button';
 import {FilmCardProps} from '../../../data/types';
 
 export const FilmCard = (props: FilmCardProps)=> (

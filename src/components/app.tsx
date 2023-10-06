@@ -1,8 +1,8 @@
 import {MainPage} from './pages/main-page/main-page';
 import {CommonProps} from '../data/types';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
 import {SignIn} from './pages/sing-in-page/sign-in';
-import {MyList} from './my-list';
+import {MyList} from './pages/my-list-page/my-list';
 import {Player} from './player';
 import {MoviePage} from './pages/movie-page/movie-page';
 import {AddReview} from './pages/movie-page/add-review';
@@ -12,7 +12,7 @@ import {PrivateRoute} from './private-route';
 export const App = (props: CommonProps)=> (
   <BrowserRouter>
     <Routes>
-      <Route path='/'>
+      <Route path='/' element={<Outlet/>} >
         <Route index element={<MainPage filmCardData={props.filmCardData} catalogFilmCards={props.catalogFilmCards} />} />
         <Route path='login' element={<SignIn />}/>
         <Route path='mylist' element={
