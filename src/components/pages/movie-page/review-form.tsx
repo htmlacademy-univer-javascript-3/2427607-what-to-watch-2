@@ -6,8 +6,8 @@ export const ReviewForm = ()=> {
     'review-text': '',
   });
   const fieldHandleChange = (evt: ChangeEvent) => {
-    const {name, value} = evt.target as {name: string; value: string};
-    setFormData({...formData, [name]: value});
+    const {name, value} = evt.target;
+    setFormData({...formData, [name]: value as string});
   };
   const reverseArray10 = Array.from(Array(10).keys()).reverse().map((e) => e + 1);
   return (
