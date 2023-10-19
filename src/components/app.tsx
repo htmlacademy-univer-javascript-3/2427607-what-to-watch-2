@@ -1,5 +1,5 @@
 import {MainPage} from './pages/main-page/main-page';
-import {CommonProps} from '../data/types';
+import {CommonProps} from '../mocks/types';
 import {BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
 import {SignIn} from './pages/sing-in-page/sign-in';
 import {MyList} from './pages/my-list-page/my-list';
@@ -17,14 +17,15 @@ export const App = (props: CommonProps)=> (
         <Route path='login' element={<SignIn />}/>
         <Route path='mylist' element={
           <PrivateRoute>
-            <MyList />
+            <MyList myListArray={props.myListArray}/>
           </PrivateRoute>
         }
         />
-        <Route path='films/:id' element={<MoviePage />} >
-          <Route path='review' element={<AddReview />} />
+        <Route path='films/:id'>
+          <Route index element={<MoviePage {...props.filmCardData} moreFilms={props.moreFilms}/>} />
+          <Route path='review' element={<AddReview {...props.filmCardData} />} />
         </Route>
-        <Route path='player/:id' element={<Player />} />
+        <Route path='player/:id' element={<Player {...props.playerData}/>} />
       </Route>
       <Route path="*" element={<ErrorPage />}/>
     </Routes>

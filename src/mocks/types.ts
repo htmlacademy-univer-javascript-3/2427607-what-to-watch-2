@@ -1,14 +1,15 @@
+import {PlayerProps} from './player';
+
 export type CommonProps = {
   filmCardData: FilmCardProps;
   catalogFilmCards: CatalogFilmCardProps[];
-}
-
-export type Image = {
-  src: string;
-  alt: string;
+  myListArray: CatalogFilmCardProps[];
+  moreFilms: CatalogFilmCardProps[];
+  playerData: PlayerProps;
 }
 
 export type FilmCardProps = {
+  id: number;
   bgImage: string;
   posterImage: string;
   title: string;

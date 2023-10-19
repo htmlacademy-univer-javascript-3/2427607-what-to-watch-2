@@ -1,6 +1,7 @@
 import {CatalogFilmCardProps, FilmCardProps} from './types';
 
 export const filmCardData: FilmCardProps = {
+  id: 20,
   bgImage:
     'img/bg-the-grand-budapest-hotel.jpg',
   posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
@@ -71,3 +72,9 @@ export const catalogFilmCards: CatalogFilmCardProps[] = [
     title: 'Midnight Special'
   },
 ];
+
+export const myListArray = catalogFilmCards.slice(0,9);
+
+export const moreFilms = catalogFilmCards.slice(0,4);
+
+export const VIDEO = 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4';

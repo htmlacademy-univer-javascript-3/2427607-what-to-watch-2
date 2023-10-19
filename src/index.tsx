@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {App} from './components/app';
-import {catalogFilmCards, filmCardData} from './data/data';
+import {catalogFilmCards, filmCardData, moreFilms, myListArray} from './mocks/films';
+import {playerData} from './mocks/player';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -10,10 +11,13 @@ const root = ReactDOM.createRoot(
 const props = {
   catalogFilmCards,
   filmCardData,
+  myListArray,
+  moreFilms,
+  playerData
 };
 
 root.render(
   <React.StrictMode>
-    <App filmCardData={props.filmCardData} catalogFilmCards={props.catalogFilmCards}/>
+    <App {...props}/>
   </React.StrictMode>
 );
