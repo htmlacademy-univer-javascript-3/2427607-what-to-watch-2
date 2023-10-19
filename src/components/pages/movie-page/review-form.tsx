@@ -9,12 +9,13 @@ export const ReviewForm = ()=> {
     const {name, value} = evt.target as {name: string; value: string};
     setFormData({...formData, [name]: value});
   };
+  const reverseArray10 = Array.from(Array(10).keys()).reverse().map((e) => e + 1);
   return (
     <div className="add-review">
       <form action="#" className="add-review__form">
         <div className="rating">
           <div className="rating__stars">
-            {Array.from(Array(10).keys()).map((e, i) => i + 1).reverse().map((e) => (
+            {reverseArray10.map((e) => (
               <>
                 <input
                   className="rating__input"
