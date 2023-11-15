@@ -1,7 +1,7 @@
-import {CatalogFilmCardProps} from '../../../mocks/types';
+import {CatalogFilmCardProps} from '../mocks/types';
 import {Link} from 'react-router-dom';
 
-export const CatalogFilmsCard = (props: CatalogFilmCardProps)=> (
+export const SmallFilmCard = (props: CatalogFilmCardProps) => (
   <article className="small-film-card catalog__films-card">
     <div className="small-film-card__image">
       <img src={props.image} alt={props.title} width="280" height="175"/>

@@ -1,6 +1,6 @@
 import { AddToListButton} from '../../buttons/add-to-list-button';
 import {PlayButton} from '../../buttons/play-button';
-import {FilmCardProps} from '../../../data/types';
+import {FilmCardProps} from '../../../mocks/types';
 
 export const FilmCard = (props: FilmCardProps)=> (
   <div className="film-card__wrap">
@@ -19,7 +19,7 @@ export const FilmCard = (props: FilmCardProps)=> (
         </p>
 
         <div className="film-card__buttons">
-          <PlayButton/>
+          <PlayButton className="btn btn--play film-card__button"/>
           <AddToListButton/>
         </div>
       </div>
