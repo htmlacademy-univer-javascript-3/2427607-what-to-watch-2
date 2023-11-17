@@ -19,9 +19,7 @@ export function useVideoPreview(isAcive: boolean, delay: number): boolean {
       safeClearTimout();
       setIsPreviewPlays(false);
     }
-    return () => {
-      safeClearTimout();
-    };
+    return safeClearTimout;
   }, [delay, isAcive]);
   return isPreviewPlays;
 }
