@@ -1,14 +1,23 @@
 import {CatalogFilmsCard} from './catalog-films-card';
 import {CatalogFilmCardProps} from '../../../mocks/types';
-// import {useState} from 'react';
+import {useState} from 'react';
 
-export const CatalogFilmsList = (props: {films: CatalogFilmCardProps[]}) =>
-  // const [activeCard, setActiveCard] = useState(props.films[0]);
-  // onMouseOver={()=>setActiveCard(film)}
-  (
+export const CatalogFilmsList = (props: {films: CatalogFilmCardProps[]}) => {
+  const [activeFilm, setActiveCard] = useState<CatalogFilmCardProps | null>(null);
+  return (
     <div className="catalog__films-list">
       {props.films.map((film) =>
-        <CatalogFilmsCard key={film.id} image={film.image} title={film.title} id={film.id}/>)}
+        (
+          <CatalogFilmsCard
+            isActive={activeFilm?.id === film.id}
+            key={film.id} image={film.image}
+            title={film.title} id={film.id}
+            onMouseOver={() => setActiveCard(film)}
+            onMouseOut={() => setActiveCard(null)}
+          />
+        )
+      )}
     </div>
   );
+};
 
