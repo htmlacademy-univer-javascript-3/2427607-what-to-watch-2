@@ -9,6 +9,7 @@ export function useVideoPreview(isAcive: boolean, delay: number): boolean {
       clearTimeout(timoutId.current);
     }
   };
+
   useEffect(() => {
     if (isAcive) {
       timoutId.current = setTimeout(() => {
@@ -21,5 +22,6 @@ export function useVideoPreview(isAcive: boolean, delay: number): boolean {
     }
     return safeClearTimout;
   }, [delay, isAcive]);
+
   return isPreviewPlays;
 }
