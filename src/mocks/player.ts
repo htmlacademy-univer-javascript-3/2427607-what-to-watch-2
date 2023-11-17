@@ -3,7 +3,6 @@ export type PlayerProps = {
   poster: string;
   time: string;
   name: string;
-  isActive: boolean;
 };
 
 export const playerData: PlayerProps = {
