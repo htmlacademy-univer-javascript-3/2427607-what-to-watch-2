@@ -13,7 +13,7 @@ export const App = (props: CommonProps)=> (
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<Outlet/>} >
-        <Route index element={<MainPage filmCardData={props.filmCardData} catalogFilmCards={props.catalogFilmCards} tabData={props.tabData}/>} />
+        <Route index element={<MainPage filmCardData={props.filmCardData} catalogFilmCards={props.catalogFilmCards}/>} />
         <Route path='login' element={<SignIn />}/>
         <Route path='mylist' element={
           <PrivateRoute>
