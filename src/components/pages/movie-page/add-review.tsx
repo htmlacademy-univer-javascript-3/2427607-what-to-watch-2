@@ -1,9 +1,9 @@
 import {Header} from '../../header';
-import {FilmCardProps} from '../../../mocks/types';
+import {FilmCards} from '../../../mocks/types';
 import {Link} from 'react-router-dom';
 import {ReviewForm} from './review-form';
 
-export const AddReview = (props: FilmCardProps)=> (
+export const AddReview = (props: FilmCards)=> (
   <section className="film-card film-card--full">
     <div className="film-card__header">
       <div className="film-card__bg">
@@ -26,7 +26,7 @@ export const AddReview = (props: FilmCardProps)=> (
       </Header>
 
       <div className="film-card__poster film-card__poster--small">
-        <img src={props.posterImage} alt={`${props.title}_poster`} width="218" height="327"/>
+        <img src={props.previewImage} alt={`${props.title}_poster`} width="218" height="327"/>
       </div>
     </div>
 

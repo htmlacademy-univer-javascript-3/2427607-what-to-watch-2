@@ -13,16 +13,16 @@ export const App = (props: CommonProps)=> (
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<Outlet/>} >
-        <Route index element={<MainPage filmCardData={props.filmCardData} catalogFilmCards={props.catalogFilmCards} />} />
+        <Route index element={<MainPage filmCardData={props.filmCardData} catalogFilmCards={props.catalogFilmCards} tabData={props.tabData}/>} />
         <Route path='login' element={<SignIn />}/>
         <Route path='mylist' element={
           <PrivateRoute>
-            <MyList myListArray={props.myListArray}/>
+            <MyList />
           </PrivateRoute>
         }
         />
         <Route path='films/:id'>
-          <Route index element={<MoviePage {...props.filmCardData} moreFilms={props.moreFilms}/>} />
+          <Route index element={<MoviePage {...props.filmCardData} tabData={props.tabData}/>} />
           <Route path='review' element={<AddReview {...props.filmCardData} />} />
         </Route>
         <Route path='player/:id' element={<Player {...props.playerData}/>} />

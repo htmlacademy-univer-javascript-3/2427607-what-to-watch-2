@@ -3,25 +3,25 @@ import {PlayButton} from '../../buttons/play-button';
 import {AddToListButton} from '../../buttons/add-to-list-button';
 import {Header} from '../../header';
 import {Tabs} from '../../tabs';
-import {CatalogFilmCardProps, FilmCardProps} from '../../../mocks/types';
-import {SmallFilmCard} from '../../small-film-card';
+import {FilmCards} from '../../../mocks/types';
 import {Link} from 'react-router-dom';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {Details} from './tabs/details';
 import {Overview} from './tabs/overview';
 import {Reviews} from './tabs/reviews';
+import {catalogFilmCards} from '../../../mocks/films';
+import {FilmList} from '../main-page/film-list';
+import {TabProps} from '../../../mocks/tabProps';
 
-type MoviePageType = FilmCardProps & {
-  moreFilms: CatalogFilmCardProps[];
-}
-export const MoviePage = (props: MoviePageType) => {
+export const MoviePage = (props: FilmCards & {tabData: TabProps}) => {
   const [activeTab, setActiveTab] = useState(0);
+  const moreFilms = catalogFilmCards.filter((film)=> film.genre === props.genre).slice(0,4);
 
   const getContentByType = () => {
     switch (activeTab) {
-      case 1: return <Details/>;
-      case 2: return <Reviews/>;
-      default: return <Overview/>;
+      case 1: return <Details {...props.tabData.details}/>;
+      case 2: return <Reviews reviews={props.tabData.reviews}/>;
+      default: return <Overview {...props.tabData.overview}/>;
     }
   };
 
@@ -57,7 +57,7 @@ export const MoviePage = (props: MoviePageType) => {
         <div className="film-card__wrap film-card__translate-top">
           <div className="film-card__info">
             <div className="film-card__poster film-card__poster--big">
-              <img src={props.posterImage} alt={`${props.title} poster`} width="218"
+              <img src={props.previewImage} alt={`${props.title} poster`} width="218"
                 height="327"
               />
             </div>
@@ -75,7 +75,7 @@ export const MoviePage = (props: MoviePageType) => {
           <h2 className="catalog__title">More like this</h2>
 
           <div className="catalog__films-list">
-            {props.moreFilms.map((film) => <SmallFilmCard {...film} key={film.id}/>)}
+            <FilmList films={moreFilms} onlyImage/>
           </div>
         </section>
 

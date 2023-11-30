@@ -1,4 +1,4 @@
-export const CatalogGenresList = ()=> {
+export const GenresList = ()=> {
   const allGenres: string[] = [
     'Comedies',
     'Crime',

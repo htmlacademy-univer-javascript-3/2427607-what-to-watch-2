@@ -1,24 +1,19 @@
 import {PlayerProps} from './player';
+import {TabProps} from './tabProps';
 
 export type CommonProps = {
-  filmCardData: FilmCardProps;
-  catalogFilmCards: CatalogFilmCardProps[];
-  myListArray: CatalogFilmCardProps[];
-  moreFilms: CatalogFilmCardProps[];
+  filmCardData: FilmCards;
+  catalogFilmCards: FilmCards[];
   playerData: PlayerProps;
+  tabData: TabProps;
 }
 
-export type FilmCardProps = {
+export type FilmCards = {
   id: number;
-  bgImage: string;
-  posterImage: string;
   title: string;
-  genre: string;
-  year: number;
-}
-
-export type CatalogFilmCardProps = {
-  id: number;
-  image: string;
-  title: string;
+  previewImage: string;
+  previewVideoLink: string;
+  genre?: string;
+  year?: number;
+  bgImage?: string;
 };
