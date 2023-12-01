@@ -1,10 +1,4 @@
-export type DetailsProps = {
-  director: string;
-  starring: string;
-  runTime: string;
-  genre: string;
-  released: number;
-};
+import {DetailsProps, OverviewProps, ReviewProps, TabProps} from '../components/types/tabs';
 
 export const detailData: DetailsProps = {
   director: 'Wes Anderson',
@@ -25,15 +19,6 @@ export const detailData: DetailsProps = {
   released: 2014
 };
 
-export type OverviewProps = {
-  description: string;
-  director: string;
-  starring: string;
-  rating: string;
-  ratingDescription: 'Bad' | 'Normal' | 'Good' | 'Very good' | 'Awesome';
-  numberOfVotes: number;
-}
-
 export const overviewData: OverviewProps = {
   description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge
         Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.\n
@@ -44,13 +29,6 @@ export const overviewData: OverviewProps = {
   rating: '8,9',
   ratingDescription: 'Very good',
   numberOfVotes: 240,
-};
-
-export type ReviewProps = {
-  author: string;
-  date: string;
-  review: string;
-  rating: number;
 };
 
 export const reviewData: ReviewProps[] = [
@@ -91,12 +69,6 @@ export const reviewData: ReviewProps[] = [
     rating: 7.0,
   },
 ];
-
-export type TabProps = {
-  overview: OverviewProps;
-  details: DetailsProps;
-  reviews: ReviewProps[];
-}
 
 export const tabData: TabProps = {
   overview: overviewData,

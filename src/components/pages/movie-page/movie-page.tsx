@@ -3,7 +3,6 @@ import {PlayButton} from '../../buttons/play-button';
 import {AddToListButton} from '../../buttons/add-to-list-button';
 import {Header} from '../../header';
 import {Tabs} from '../../tabs';
-import {FilmCards} from '../../../mocks/types';
 import {Link} from 'react-router-dom';
 import {useState} from 'react';
 import {Details} from './tabs/details';
@@ -11,11 +10,12 @@ import {Overview} from './tabs/overview';
 import {Reviews} from './tabs/reviews';
 import {catalogFilmCards} from '../../../mocks/films';
 import {FilmList} from '../main-page/film-list';
-import {TabProps} from '../../../mocks/tabProps';
+import {FilmCards} from '../../types/film';
+import {TabProps} from '../../types/tabs';
 
 export const MoviePage = (props: FilmCards & {tabData: TabProps}) => {
   const [activeTab, setActiveTab] = useState(0);
-  const moreFilms = catalogFilmCards.filter((film)=> film.genre === props.genre).slice(0,4);
+  const moreFilms = catalogFilmCards.filter((film: FilmCards)=> film.genre === props.genre).slice(0,4);
 
   const getContentByType = () => {
     switch (activeTab) {

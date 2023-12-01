@@ -1,5 +1,5 @@
-import {ReviewProps} from '../../../../mocks/tabProps';
 import {v4 as uuid} from 'uuid';
+import {ReviewProps} from '../../../types/tabs';
 
 export const Reviews = (props: { reviews: ReviewProps[] }) => {
   const firstRatings = props.reviews.slice(0, props.reviews.length / 2);

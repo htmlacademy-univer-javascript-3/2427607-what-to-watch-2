@@ -1,7 +1,7 @@
 import {Header} from '../../header';
-import {FilmCards} from '../../../mocks/types';
 import {Link} from 'react-router-dom';
 import {ReviewForm} from './review-form';
+import {FilmCards} from '../../types/film';
 
 export const AddReview = (props: FilmCards)=> (
   <section className="film-card film-card--full">

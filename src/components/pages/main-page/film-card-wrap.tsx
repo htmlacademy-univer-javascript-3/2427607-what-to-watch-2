@@ -1,6 +1,6 @@
 import { AddToListButton} from '../../buttons/add-to-list-button';
 import {PlayButton} from '../../buttons/play-button';
-import {FilmCards} from '../../../mocks/types';
+import {FilmCards} from '../../types/film';
 
 export const FilmCardWrap = (props: FilmCards)=> (
   <div className="film-card__wrap">

@@ -1,4 +1,4 @@
-import {OverviewProps} from '../../../../mocks/tabProps';
+import {OverviewProps} from '../../../types/tabs';
 
 export const Overview = (props: OverviewProps) => (
   <>

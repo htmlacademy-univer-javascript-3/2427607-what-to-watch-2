@@ -4,7 +4,7 @@ import {FilmCardWrap} from './film-card-wrap';
 import {ShowMoreButton} from '../../buttons/show-more-button';
 import {GenresList} from './genres-list';
 import {FilmList} from './film-list';
-import {FilmCards} from '../../../mocks/types';
+import {FilmCards} from '../../types/film';
 
 type MainPageProps = {
   filmCardData: FilmCards;

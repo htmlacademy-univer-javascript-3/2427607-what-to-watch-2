@@ -1,5 +1,5 @@
-import {PlayerProps} from '../mocks/player';
 import {PlayButton} from './buttons/play-button';
+import {PlayerProps} from './types/player';
 
 export const Player = (props: PlayerProps)=> (
   <div className="player">

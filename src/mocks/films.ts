@@ -137,5 +137,3 @@ export const catalogFilmCards: FilmCards[] = [
     genre: 'Thriller',
   },
 ];
-
-export const VIDEO = 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4';
