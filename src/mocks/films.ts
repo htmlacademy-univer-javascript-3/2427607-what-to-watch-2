@@ -1,4 +1,4 @@
-import {FilmCards} from './types';
+import {FilmCards} from '../components/types/film';
 
 export const filmCardData: FilmCards = {
   id: 20,
