@@ -1,14 +1,14 @@
 import {Header} from '../../header';
 import {Footer} from '../../footer';
-import {FilmCard} from './film-card';
+import {FilmCardWrap} from './film-card-wrap';
 import {ShowMoreButton} from '../../buttons/show-more-button';
-import {CatalogGenresList} from './catalog-genres-list';
-import {CatalogFilmsList} from './catalog-films-list';
-import {CatalogFilmCardProps, FilmCardProps} from '../../../mocks/types';
+import {GenresList} from './genres-list';
+import {FilmList} from './film-list';
+import {FilmCards} from '../../types/film';
 
 type MainPageProps = {
-  filmCardData: FilmCardProps;
-  catalogFilmCards: CatalogFilmCardProps[];
+  filmCardData: FilmCards;
+  catalogFilmCards: FilmCards[];
 };
 
 export const MainPage = (props: MainPageProps)=>(
@@ -20,16 +20,16 @@ export const MainPage = (props: MainPageProps)=>(
 
       <h1 className="visually-hidden">WTW</h1>
       <Header classname="film-card__head"/>
-      <FilmCard {...props.filmCardData}/>
+      <FilmCardWrap {...props.filmCardData}/>
     </section>
 
     <div className="page-content">
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <CatalogGenresList />
+        <GenresList />
 
-        <CatalogFilmsList films={props.catalogFilmCards}/>
+        <FilmList films={props.catalogFilmCards} onlyImage={false}/>
 
         <ShowMoreButton/>
       </section>

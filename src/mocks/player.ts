@@ -1,9 +1,4 @@
-export type PlayerProps = {
-  src: string;
-  poster: string;
-  time: string;
-  name: string;
-};
+import {PlayerProps} from '../components/types/player';
 
 export const playerData: PlayerProps = {
   src: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',

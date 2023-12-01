@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {App} from './components/app';
-import {catalogFilmCards, filmCardData, moreFilms, myListArray} from './mocks/films';
+import {catalogFilmCards, filmCardData} from './mocks/films';
 import {playerData} from './mocks/player';
+import {tabData} from './mocks/tabProps';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,9 +12,8 @@ const root = ReactDOM.createRoot(
 const props = {
   catalogFilmCards,
   filmCardData,
-  myListArray,
-  moreFilms,
-  playerData
+  playerData,
+  tabData
 };
 
 root.render(
