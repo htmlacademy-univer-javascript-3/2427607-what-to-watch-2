@@ -1,5 +1,4 @@
 import {FilmCards} from '../types/film';
-import {createAction} from "@reduxjs/toolkit";
 
 export const filmCardData: FilmCards = {
   id: 20,
