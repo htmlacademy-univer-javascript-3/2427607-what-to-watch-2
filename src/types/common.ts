@@ -4,7 +4,6 @@ import {TabProps} from './tabs';
 
 export type CommonProps = {
   filmCardData: FilmCards;
-  catalogFilmCards: FilmCards[];
   playerData: PlayerProps;
   tabData: TabProps;
 }

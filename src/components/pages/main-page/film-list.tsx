@@ -1,8 +1,8 @@
 import {FilmCard} from './film-card';
 import {useState} from 'react';
-import {FilmCards} from '../../types/film';
+import {FilmCards} from '../../../types/film';
 
-export const FilmList = (props: {films: FilmCards[]; onlyImage: boolean }) => {
+export const FilmList = (props: {films: FilmCards[]; onlyImage?: false }) => {
   const [activeFilmId, setActiveCardId] = useState<number | null>(null);
   return (
     <div className="catalog__films-list">

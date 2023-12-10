@@ -1,4 +1,4 @@
-import {PlayerProps} from '../components/types/player';
+import {PlayerProps} from '../types/player';
 
 export const playerData: PlayerProps = {
   src: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',

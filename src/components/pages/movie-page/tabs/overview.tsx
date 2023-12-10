@@ -1,4 +1,4 @@
-import {OverviewProps} from '../../../types/tabs';
+import {OverviewProps} from '../../../../types/tabs';
 
 export const Overview = (props: OverviewProps) => (
   <>

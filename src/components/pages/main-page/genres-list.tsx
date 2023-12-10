@@ -1,24 +1,18 @@
-export const GenresList = ()=> {
-  const allGenres: string[] = [
-    'Comedies',
-    'Crime',
-    'Documentary',
-    'Dramas',
-    'Horror',
-    'Kids & Family',
-    'Romance',
-    'Sci-Fi',
-    'Thrillers',
-  ];
-  return (
-    <ul className="catalog__genres-list">
-      <li className="catalog__genres-item catalog__genres-item--active">
-        <a href="src/index#" className="catalog__genres-link">All genres</a>
-      </li>
-      {allGenres.map((genre) => (
-        <li key={genre} className="catalog__genres-item">
-          <a href="src/index#" className="catalog__genres-link">{genre}</a>
-        </li>))}
-    </ul>
-  );
-};
+import {Link} from 'react-router-dom';
+import {genresList} from '../../../types/genres-list';
+
+type GenresListProps = {
+  activeGenre: string;
+  setActiveGenre: (item: {
+    category: string;
+    genre: string;
+  }) => void;
+}
+export const GenresList = (props: GenresListProps)=> (
+  <ul className="catalog__genres-list">
+    {genresList.map((item) => (
+      <li key={item.genre} className={`catalog__genres-item ${item.category === props.activeGenre ? 'catalog__genres-item--active' : ''}`}>
+        <Link to="#" className="catalog__genres-link" onClick={() => props.setActiveGenre(item)}>{item.category}</Link>
+      </li>))}
+  </ul>
+);
