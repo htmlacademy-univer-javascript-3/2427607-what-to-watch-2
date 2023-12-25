@@ -1,4 +1,4 @@
-import {DetailsProps, OverviewProps, ReviewProps, TabProps} from '../components/types/tabs';
+import {DetailsProps, OverviewProps, ReviewProps, TabProps} from '../types/tabs';
 
 export const detailData: DetailsProps = {
   director: 'Wes Anderson',

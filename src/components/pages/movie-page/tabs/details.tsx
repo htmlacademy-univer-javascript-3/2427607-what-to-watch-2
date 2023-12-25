@@ -1,4 +1,4 @@
-import {DetailsProps} from '../../../types/tabs';
+import {DetailsProps} from '../../../../types/tabs';
 
 export const Details = (props: DetailsProps) => (
   <div className="film-card__text film-card__row">

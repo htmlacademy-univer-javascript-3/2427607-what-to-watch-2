@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 import {VideoPreview} from '../../video-preview';
-import {FilmCards} from '../../types/film';
+import {FilmCards} from '../../../types/film';
 
 type SmallFilmProps = {
   filmData: FilmCards;

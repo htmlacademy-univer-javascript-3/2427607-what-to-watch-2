@@ -3,7 +3,7 @@ export type FilmCards = {
   title: string;
   previewImage: string;
   previewVideoLink: string;
-  genre?: string;
+  genre: string;
   year?: number;
   bgImage?: string;
 };

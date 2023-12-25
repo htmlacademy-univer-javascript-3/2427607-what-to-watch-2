@@ -1,4 +1,4 @@
-import {FilmCards} from '../components/types/film';
+import {FilmCards} from '../types/film';
 
 export const filmCardData: FilmCards = {
   id: 20,
@@ -137,3 +137,9 @@ export const catalogFilmCards: FilmCards[] = [
     genre: 'Thriller',
   },
 ];
+
+export const getFilmsByGenre = (genre: string) => catalogFilmCards.filter((film: FilmCards)=> genre === 'All genres' ? true : film.genre === genre);
+
+// export const getFilmsByGenre = createAction('GET_FILMS_BY_GENRE', (genre: string) => ({
+//   payload: genre,
+// }));

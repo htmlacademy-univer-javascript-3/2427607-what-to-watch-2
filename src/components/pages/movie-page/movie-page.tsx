@@ -8,14 +8,14 @@ import {useState} from 'react';
 import {Details} from './tabs/details';
 import {Overview} from './tabs/overview';
 import {Reviews} from './tabs/reviews';
-import {catalogFilmCards} from '../../../mocks/films';
+import {getFilmsByGenre} from '../../../mocks/films';
 import {FilmList} from '../main-page/film-list';
-import {FilmCards} from '../../types/film';
-import {TabProps} from '../../types/tabs';
+import {FilmCards} from '../../../types/film';
+import {TabProps} from '../../../types/tabs';
 
 export const MoviePage = (props: FilmCards & {tabData: TabProps}) => {
   const [activeTab, setActiveTab] = useState(0);
-  const moreFilms = catalogFilmCards.filter((film: FilmCards)=> film.genre === props.genre).slice(0,4);
+  const moreFilms = getFilmsByGenre(props.genre).slice(0,4);
 
   const getContentByType = () => {
     switch (activeTab) {

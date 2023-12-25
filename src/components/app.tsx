@@ -7,13 +7,13 @@ import {MoviePage} from './pages/movie-page/movie-page';
 import {AddReview} from './pages/movie-page/add-review';
 import {ErrorPage} from './pages/error-page';
 import {PrivateRoute} from './private-route';
-import {CommonProps} from './types/common';
+import {CommonProps} from '../types/common';
 
 export const App = (props: CommonProps)=> (
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<Outlet/>} >
-        <Route index element={<MainPage filmCardData={props.filmCardData} catalogFilmCards={props.catalogFilmCards}/>} />
+        <Route index element={<MainPage {...props.filmCardData}/>} />
         <Route path='login' element={<SignIn />}/>
         <Route path='mylist' element={
           <PrivateRoute>
