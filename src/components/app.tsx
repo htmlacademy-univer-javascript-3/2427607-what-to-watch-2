@@ -1,4 +1,4 @@
-import {MainPage} from './pages/main-page/main-page';
+import {MainPage} from './pages/main-page/main/main-page';
 import {BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
 import {SignIn} from './pages/sing-in-page/sign-in';
 import {MyList} from './pages/my-list-page/my-list';
