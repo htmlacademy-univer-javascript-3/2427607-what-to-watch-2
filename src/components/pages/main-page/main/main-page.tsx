@@ -13,10 +13,10 @@ const FILM_ON_ONE_PAGE = 8;
 export const MainPage = (props: FilmCards)=> {
   const [activeGenre, setActiveGenre] = useState({category: 'All genres', genre: 'All genres'});
   const [filmListByGenre, setFilmListByGenre] = useState(catalogFilmCards);
-  const [count, setCount] = useState(1);
+  const [clickCount, setCount] = useState(1);
   useEffect(()=> {
-    setFilmListByGenre(getFilmsByGenre(activeGenre.genre).slice(0, FILM_ON_ONE_PAGE * count));
-  }, [activeGenre, count]);
+    setFilmListByGenre(getFilmsByGenre(activeGenre.genre).slice(0, FILM_ON_ONE_PAGE * clickCount));
+  }, [activeGenre, clickCount]);
 
   return (
     <div>
@@ -38,8 +38,8 @@ export const MainPage = (props: FilmCards)=> {
 
           <FilmList films={filmListByGenre}/>
 
-          <div className={filmListByGenre?.length < count * FILM_ON_ONE_PAGE ? 'non_visible' : ''}>
-            <ShowMoreButton setCount={() => setCount(count + 1)}/>
+          <div className={filmListByGenre?.length < clickCount * FILM_ON_ONE_PAGE ? 'non_visible' : ''}>
+            <ShowMoreButton setCount={() => setCount(clickCount + 1)}/>
           </div>
         </section>
 
