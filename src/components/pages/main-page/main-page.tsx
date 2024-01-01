@@ -8,12 +8,14 @@ import {FilmCards} from '../../../types/film';
 import {useEffect, useState} from 'react';
 import {catalogFilmCards, getFilmsByGenre} from '../../../mocks/films';
 
+const FILM_COUNT = 8;
 export const MainPage = (props: FilmCards)=> {
   const [activeGenre, setActiveGenre] = useState({category: 'All genres', genre: 'All genres'});
   const [filmListByGenre, setFilmListByGenre] = useState(catalogFilmCards);
+  const [count, setCount] = useState(1);
   useEffect(()=> {
-    setFilmListByGenre(getFilmsByGenre(activeGenre.genre));
-  }, [activeGenre]);
+    setFilmListByGenre(getFilmsByGenre(activeGenre.genre).slice(0, FILM_COUNT * count));
+  }, [activeGenre, count]);
 
   return (
     <div>
@@ -35,7 +37,9 @@ export const MainPage = (props: FilmCards)=> {
 
           <FilmList films={filmListByGenre}/>
 
-          <ShowMoreButton/>
+          <div className={filmListByGenre?.length > count * FILM_COUNT ? 'non_visible' : ''}>
+            <ShowMoreButton setCount={() => setCount(count + 1)}/>
+          </div>
         </section>
 
         <Footer/>
