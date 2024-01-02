@@ -15,7 +15,7 @@ type State = {
   isLoading: boolean;
   playerData: PlayerProps;
   tabData: TabProps;
-  authorizationStatus: AuthorizationStatus.Unknown;
+  authorizationStatus: AuthorizationStatus;
 };
 
 const initialState: State = {
