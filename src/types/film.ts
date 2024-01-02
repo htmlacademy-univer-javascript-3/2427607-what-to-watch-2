@@ -1,9 +1,27 @@
 export type FilmCards = {
   id: number;
-  title: string;
+  name: string;
   previewImage: string;
   previewVideoLink: string;
   genre: string;
-  year?: number;
-  bgImage?: string;
+  released?: number;
+  backgroundImage?: string;
+};
+
+export type Film = {
+  id: string;
+  name: string;
+  posterImage: string;
+  backgroundImage: string;
+  backgroundColor: string;
+  videoLink: string;
+  description: string;
+  rating: number;
+  scoresCount: number;
+  director: string;
+  starring: string[];
+  runTime: number;
+  genre: string;
+  released: number;
+  isFavorite: boolean;
 };

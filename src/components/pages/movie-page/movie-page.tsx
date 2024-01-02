@@ -10,18 +10,19 @@ import {Overview} from './tabs/overview';
 import {Reviews} from './tabs/reviews';
 import {getFilmsByGenre} from '../../../mocks/films';
 import {FilmList} from '../main-page/film-list';
-import {FilmCards} from '../../../types/film';
-import {TabProps} from '../../../types/tabs';
+import {useAppSelector} from '../../../hooks';
 
-export const MoviePage = (props: FilmCards & {tabData: TabProps}) => {
+export const MoviePage = () => {
+  const filmData = useAppSelector((state) => state.updateStore.filmCardData);
+  const tabData = useAppSelector((state) => state.updateStore.tabData);
   const [activeTab, setActiveTab] = useState(0);
-  const moreFilms = getFilmsByGenre(props.genre).slice(0,4);
+  const moreFilms = getFilmsByGenre(filmData.genre).slice(0,4);
 
   const getContentByType = () => {
     switch (activeTab) {
-      case 1: return <Details {...props.tabData.details}/>;
-      case 2: return <Reviews reviews={props.tabData.reviews}/>;
-      default: return <Overview {...props.tabData.overview}/>;
+      case 1: return <Details {...tabData.details}/>;
+      case 2: return <Reviews reviews={tabData.reviews}/>;
+      default: return <Overview {...tabData.overview}/>;
     }
   };
 
@@ -30,7 +31,7 @@ export const MoviePage = (props: FilmCards & {tabData: TabProps}) => {
       <section className="film-card film-card--full">
         <div className="film-card__hero">
           <div className="film-card__bg">
-            <img src={props.bgImage} alt={props.title}/>
+            <img src={filmData.backgroundImage} alt={filmData.name}/>
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -39,10 +40,10 @@ export const MoviePage = (props: FilmCards & {tabData: TabProps}) => {
 
           <div className="film-card__wrap">
             <div className="film-card__desc">
-              <h2 className="film-card__title"> {props.title} </h2>
+              <h2 className="film-card__title"> {filmData.name} </h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{props.genre}</span>
-                <span className="film-card__year">{props.year}</span>
+                <span className="film-card__genre">{filmData.genre}</span>
+                <span className="film-card__year">{filmData.released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -57,7 +58,7 @@ export const MoviePage = (props: FilmCards & {tabData: TabProps}) => {
         <div className="film-card__wrap film-card__translate-top">
           <div className="film-card__info">
             <div className="film-card__poster film-card__poster--big">
-              <img src={props.previewImage} alt={`${props.title} poster`} width="218"
+              <img src={filmData.previewImage} alt={`${filmData.name} poster`} width="218"
                 height="327"
               />
             </div>

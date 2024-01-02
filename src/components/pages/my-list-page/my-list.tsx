@@ -1,9 +1,8 @@
 import {Header} from '../../header';
 import {Footer} from '../../footer';
 import {FilmList} from '../main-page/film-list';
-import {catalogFilmCards} from '../../../mocks/films';
 
-const myFilms = catalogFilmCards.slice(0, 9);
+const myFilms = [].slice(0, 9);
 export const MyList = ()=> (
   <div className="user-page">
     <Header classname="user-page__head">
