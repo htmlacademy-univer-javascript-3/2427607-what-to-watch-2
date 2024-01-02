@@ -3,7 +3,7 @@ import {SignOutButton} from './buttons/sign-out-button';
 import {PropsWithChildren} from 'react';
 import {useAppSelector} from '../hooks';
 import {AuthorizationStatus} from '../consts';
-import {SignInButton} from "./buttons/sign-in-button";
+import {SignInButton} from './buttons/sign-in-button';
 
 type HeaderProps = PropsWithChildren<{
   classname?: string;
