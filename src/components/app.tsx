@@ -1,5 +1,6 @@
 import {MainPage} from './pages/main-page/main/main-page';
-import {BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
+import {Route, Routes, Outlet } from 'react-router-dom';
+import {HelmetProvider} from 'react-helmet-async';
 import {SignIn} from './pages/sing-in-page/sign-in';
 import {MyList} from './pages/my-list-page/my-list';
 import {Player} from './player';
@@ -9,35 +10,37 @@ import {ErrorPage} from './pages/error-page';
 import {PrivateRoute} from './private-route';
 import {Spinner} from './spinner';
 import {useAppSelector} from '../hooks';
+import {AppRoute, AuthorizationStatus} from '../consts';
 
 export const App = ()=> {
-  // const isAuthChecked = useAppSelector((state) => state.updateStore.authorizationStatus === AuthorizationStatus.Auth);
+  const authorizationStatus = useAppSelector((state) => state.updateStore.authorizationStatus);
+  const isAuthChecked = authorizationStatus === AuthorizationStatus.Auth;
   const isFilmsDataLoading = useAppSelector((state) => !state.updateStore.isLoading);
-  if (!isFilmsDataLoading) {
+  if (!isFilmsDataLoading && isAuthChecked) {
     return (
       <Spinner />
     );
   }
   return(
-    <BrowserRouter>
+    <HelmetProvider>
       <Routes>
-        <Route path='/' element={<Outlet/>}>
+        <Route path={AppRoute.Main} element={<Outlet/>}>
           <Route index element={<MainPage />}/>
-          <Route path='login' element={<SignIn/>}/>
-          <Route path='mylist' element={
-            <PrivateRoute>
+          <Route path={AppRoute.Login} element={<SignIn/>}/>
+          <Route path={AppRoute.MyList} element={
+            <PrivateRoute authorizationStatus={authorizationStatus}>
               <MyList/>
             </PrivateRoute>
           }
           />
-          <Route path='films/:id'>
+          <Route path={AppRoute.Film}>
             <Route index element={<MoviePage />}/>
-            <Route path='review' element={<AddReview />}/>
+            <Route path={AppRoute.Review} element={<AddReview />}/>
           </Route>
-          <Route path='player/:id' element={<Player />}/>
+          <Route path={AppRoute.Player} element={<Player />}/>
         </Route>
-        <Route path="*" element={<ErrorPage/>}/>
+        <Route path={AppRoute.Other} element={<ErrorPage/>}/>
       </Routes>
-    </BrowserRouter>
+    </HelmetProvider>
   );
 };
