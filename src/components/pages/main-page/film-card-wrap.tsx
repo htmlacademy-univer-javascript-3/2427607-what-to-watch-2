@@ -7,7 +7,7 @@ export const FilmCardWrap = (props: FilmCards)=> (
     <div className="film-card__info">
       <div className="film-card__poster">
         <img src={props.previewImage} alt={`${props.name}_poster`} width="218"
-             height="327"
+          height="327"
         />
       </div>
 
