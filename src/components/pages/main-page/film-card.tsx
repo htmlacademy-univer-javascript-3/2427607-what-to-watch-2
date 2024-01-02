@@ -19,11 +19,11 @@ export const FilmCard = (props: SmallFilmProps)=> (
         src={props.filmData.previewVideoLink}
         poster={props.filmData.previewImage}
         isActive={props.isActive}
-        name={props.filmData.title}
+        name={props.filmData.name}
       />
     </div>
     <h3 className="small-film-card__title">
-      <Link className="small-film-card__link" to={`/films/${props.filmData.id}`}>{props.filmData.title}</Link>
+      <Link className="small-film-card__link" to={`/films/${props.filmData.id}`}>{props.filmData.name}</Link>
     </h3>
   </article>
 );
