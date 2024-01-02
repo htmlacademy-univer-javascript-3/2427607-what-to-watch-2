@@ -1,6 +1,6 @@
 import {createAction} from '@reduxjs/toolkit';
 import {FilmCards} from '../types/film';
-import {AuthorizationStatus} from "../consts";
+import {AuthorizationStatus} from '../consts';
 
 export const setGenre = createAction<string>('data/setGenre');
 

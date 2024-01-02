@@ -4,8 +4,21 @@ import {playerData} from '../../mocks/player';
 import {tabData} from '../../mocks/tabProps';
 import {AuthorizationStatus} from '../../consts';
 import {filmCardData} from '../../mocks/films';
+import {FilmCards} from '../../types/film';
+import {PlayerProps} from '../../types/player';
+import {TabProps} from '../../types/tabs';
 
-const initialState = {
+type State = {
+  activeGenre: string;
+  films: FilmCards[];
+  filmCardData: FilmCards;
+  isLoading: boolean;
+  playerData: PlayerProps;
+  tabData: TabProps;
+  authorizationStatus: AuthorizationStatus.Unknown;
+};
+
+const initialState: State = {
   activeGenre: '',
   films: [],
   filmCardData: filmCardData,
