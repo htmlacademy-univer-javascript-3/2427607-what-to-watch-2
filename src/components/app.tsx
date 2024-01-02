@@ -7,11 +7,10 @@ import {MoviePage} from './pages/movie-page/movie-page';
 import {AddReview} from './pages/movie-page/add-review';
 import {ErrorPage} from './pages/error-page';
 import {PrivateRoute} from './private-route';
-import {CommonProps} from '../types/common';
 import {Spinner} from './spinner';
 import {useAppSelector} from '../hooks';
 
-export const App = (props: CommonProps)=> {
+export const App = ()=> {
   // const isAuthChecked = useAppSelector((state) => state.updateStore.authorizationStatus === AuthorizationStatus.Auth);
   const isFilmsDataLoading = useAppSelector((state) => !state.updateStore.isLoading);
   if (!isFilmsDataLoading) {

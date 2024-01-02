@@ -3,7 +3,6 @@ import {loadFilms, requireAuth, setGenre, setLoadingStatus} from '../action';
 import {playerData} from '../../mocks/player';
 import {tabData} from '../../mocks/tabProps';
 import {AuthorizationStatus} from '../../consts';
-import {FilmCards} from '../../types/film';
 import {filmCardData} from '../../mocks/films';
 
 const initialState = {
