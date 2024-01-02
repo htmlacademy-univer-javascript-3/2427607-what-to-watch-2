@@ -2,8 +2,8 @@ import {FilmCards} from '../types/film';
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AppDispatch, State} from '../types/state';
 import {AxiosInstance} from 'axios';
-import {APIRoute, AuthorizationStatus} from '../consts';
-import {loadFilms, requireAuth, setLoadingStatus} from './action';
+import {APIRoute, AppRoute, AuthorizationStatus} from '../consts';
+import {loadFilms, redirectToRoute, requireAuth, setLoadingStatus} from './action';
 import {AuthData} from '../types/auth-data';
 import {UserData} from '../types/user-data';
 import {dropToken, saveToken} from '../services/token';
@@ -48,8 +48,8 @@ export const loginAction = createAsyncThunk<void, AuthData, {
   async ({login: email, password}, {dispatch, extra: api}) => {
     const {data: {token}} = await api.post<UserData>(APIRoute.Login, {email, password});
     saveToken(token);
-    // dispatch(redirectToRoute(AppRoute.Result));
     dispatch(requireAuth(AuthorizationStatus.Auth));
+    dispatch(redirectToRoute(AppRoute.Main));
   },
 );
 
@@ -63,5 +63,6 @@ export const logoutAction = createAsyncThunk<void, undefined, {
     await api.delete(APIRoute.Logout);
     dropToken();
     dispatch(requireAuth(AuthorizationStatus.NoAuth));
+    dispatch(redirectToRoute(AppRoute.Login));
   },
 );

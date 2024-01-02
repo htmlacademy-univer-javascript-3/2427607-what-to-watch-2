@@ -11,3 +11,13 @@ export enum AuthorizationStatus {
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
+
+export enum AppRoute {
+  Login = '/login',
+  Film = 'films/:id',
+  Review = 'review',
+  Player = 'player/:id',
+  MyList = 'mylist',
+  Main = '/',
+  Other = '*'
+}
