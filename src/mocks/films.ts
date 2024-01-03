@@ -1,14 +1,11 @@
 import {FilmCards} from '../types/film';
 
 export const filmCardData: FilmCards = {
-  id: 20,
-  backgroundImage:
-    'img/bg-the-grand-budapest-hotel.jpg',
+  id: '20',
   previewImage: 'img/the-grand-budapest-hotel-poster.jpg',
   previewVideoLink: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   name: 'The Grand Budapest Hotel',
   genre: 'Drama',
-  released: 2014
 };
 
 // export const catalogFilmCards: FilmCards[] = [
@@ -224,7 +221,7 @@ export const filmCardData: FilmCards = {
 //   },
 // ];
 
-export const getFilmsByGenre = (genre: string) => [].filter((film: FilmCards)=> genre === 'All genres' ? true : film.genre === genre);
+export const getFilmsByGenre = (genre: string, allFilms: FilmCards[]) => allFilms.filter((film: FilmCards)=> genre === 'All genres' ? true : film.genre === genre);
 
 // export const getFilmsByGenre = createAction('GET_FILMS_BY_GENRE', (genre: string) => ({
 //   payload: genre,

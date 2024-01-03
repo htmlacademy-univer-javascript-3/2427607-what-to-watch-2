@@ -1,7 +1,7 @@
 export type DetailsProps = {
   director: string;
-  starring: string;
-  runTime: string;
+  starring: string[];
+  runTime: number;
   genre: string;
   released: number;
 };
@@ -9,10 +9,10 @@ export type DetailsProps = {
 export type OverviewProps = {
   description: string;
   director: string;
-  starring: string;
-  rating: string;
+  starring: string[];
+  rating: number;
   ratingDescription: 'Bad' | 'Normal' | 'Good' | 'Very good' | 'Awesome';
-  numberOfVotes: number;
+  scoresCount: number;
 };
 
 export type ReviewProps = {

@@ -1,12 +1,12 @@
 import { AddToListButton} from '../../buttons/add-to-list-button';
 import {PlayButton} from '../../buttons/play-button';
-import {FilmCards} from '../../../types/film';
+import {Film} from '../../../types/film';
 
-export const FilmCardWrap = (props: FilmCards)=> (
+export const FilmCardWrap = (props: Film)=> (
   <div className="film-card__wrap">
     <div className="film-card__info">
       <div className="film-card__poster">
-        <img src={props.previewImage} alt={`${props.name}_poster`} width="218"
+        <img src={props.posterImage} alt={`${props.name}_poster`} width="218"
           height="327"
         />
       </div>

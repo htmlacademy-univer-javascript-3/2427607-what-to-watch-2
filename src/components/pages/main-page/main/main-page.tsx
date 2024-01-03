@@ -5,20 +5,32 @@ import {FilmCardWrap} from '../film-card-wrap';
 import {ShowMoreButton} from '../../../buttons/show-more-button';
 import {GenresList} from '../genres-list';
 import {FilmList} from '../film-list';
-import {getFilmsByGenre} from '../../../../mocks/films';
 import './main-page.css';
-import {useAppSelector} from '../../../../hooks';
+import {useAppDispatch, useAppSelector} from '../../../../hooks';
+import {fetchFilm} from '../../../../store/api-actions';
+import {Spinner} from '../../../spinner';
+import {getFilmsByGenre} from '../../../../mocks/films';
 
 const FILM_ON_ONE_PAGE = 8;
 export const MainPage = ()=> {
-  const filmData = useAppSelector((state) => state.updateStore.filmCardData);
+  const allFilms = useAppSelector((state) => state.updateStore.films);
+  const filmData = useAppSelector((state) => state.updateStore.fullFilms[allFilms[0].id]);
+  const dispatch = useAppDispatch();
+  if (!filmData) {
+    dispatch(fetchFilm(allFilms[0].id));
+  }
   const [activeGenre, setActiveGenre] = useState({category: 'All genres', genre: 'All genres'});
-  const [filmListByGenre, setFilmListByGenre] = useState([]);
+  const [filmListByGenre, setFilmListByGenre] = useState(allFilms ?? []);
   const [clickCount, setCount] = useState(1);
   useEffect(()=> {
-    setFilmListByGenre(getFilmsByGenre(activeGenre.genre).slice(0, FILM_ON_ONE_PAGE * clickCount));
-  }, [activeGenre, clickCount]);
+    setFilmListByGenre(getFilmsByGenre(activeGenre.genre, allFilms).slice(0, FILM_ON_ONE_PAGE * clickCount));
+  }, [activeGenre.genre, clickCount]);
 
+  if (!filmData){
+    return (
+      <Spinner />
+    );
+  }
   return (
     <div>
       <section className="film-card">

@@ -1,11 +1,9 @@
 export type FilmCards = {
-  id: number;
+  id: string;
   name: string;
   previewImage: string;
   previewVideoLink: string;
   genre: string;
-  released?: number;
-  backgroundImage?: string;
 };
 
 export type Film = {
@@ -24,4 +22,12 @@ export type Film = {
   genre: string;
   released: number;
   isFavorite: boolean;
+};
+
+export type Comment = {
+  id: string;
+  date: string;
+  user: string;
+  comment: string;
+  rating: number;
 };

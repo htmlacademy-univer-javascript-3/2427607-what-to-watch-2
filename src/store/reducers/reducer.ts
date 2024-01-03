@@ -1,30 +1,38 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {loadFilms, requireAuth, setGenre, setLoadingStatus} from '../action';
+import {
+  addCommentById,
+  loadCommentsById,
+  loadFilmById,
+  loadFilms,
+  loadSimilarFilms,
+  requireAuth,
+  setGenre,
+  setLoadingStatus
+} from '../action';
 import {playerData} from '../../mocks/player';
-import {tabData} from '../../mocks/tabProps';
 import {AuthorizationStatus} from '../../consts';
-import {filmCardData} from '../../mocks/films';
-import {FilmCards} from '../../types/film';
+import {Film, FilmCards, Comment} from '../../types/film';
 import {PlayerProps} from '../../types/player';
-import {TabProps} from '../../types/tabs';
 
 type State = {
   activeGenre: string;
   films: FilmCards[];
-  filmCardData: FilmCards;
+  similarFilms: {[key: string]: FilmCards[]};
+  fullFilms: {[key: string]: Film};
+  commentsMap: {[key: string]: Comment[]};
   isLoading: boolean;
   playerData: PlayerProps;
-  tabData: TabProps;
   authorizationStatus: AuthorizationStatus;
 };
 
 const initialState: State = {
   activeGenre: '',
   films: [],
-  filmCardData: filmCardData,
+  similarFilms: {},
+  fullFilms: {},
+  commentsMap: {},
   isLoading: false,
   playerData: playerData,
-  tabData: tabData,
   authorizationStatus: AuthorizationStatus.Unknown,
 };
 export const getFilmsByGenre = createReducer(initialState, (builder) => {
@@ -39,5 +47,21 @@ export const getFilmsByGenre = createReducer(initialState, (builder) => {
     })
     .addCase(setLoadingStatus, (state, action) => {
       state.isLoading = action.payload;
+    })
+    .addCase(loadFilmById, (state, action) => {
+      state.fullFilms[action.payload.id] = action.payload;
+    })
+    .addCase(loadCommentsById, (state, action) => {
+      state.commentsMap[action.payload.id] = action.payload.comments;
+    })
+    .addCase(addCommentById, (state, action) => {
+      if (!state.commentsMap[action.payload.id]) {
+        state.commentsMap[action.payload.id] = [action.payload.comment];
+      } else {
+        state.commentsMap[action.payload.id].push(action.payload.comment);
+      }
+    })
+    .addCase(loadSimilarFilms, (state, action) => {
+      state.similarFilms[action.payload.id] = action.payload.films;
     });
 });

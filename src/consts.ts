@@ -1,7 +1,7 @@
 export enum APIRoute {
   Films = '/films',
-  Film = '/films/{filmId}',
-  SimilarFilms = '/films/{filmId}/similar',
+  SimilarFilms = '/similar',
+  Comments = '/comments',
   Login = '/login',
   Logout = '/logout',
 }
@@ -19,5 +19,5 @@ export enum AppRoute {
   Player = 'player/:id',
   MyList = 'mylist',
   Main = '/',
-  Other = '*'
+  Other = '/*'
 }
