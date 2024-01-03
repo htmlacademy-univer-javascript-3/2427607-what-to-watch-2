@@ -41,7 +41,7 @@ export const AddReview = ()=> {
         </div>
       </div>
 
-      <ReviewForm id='6c84c13e-e4e0-4bcc-bdb0-bd25b1ab5d8d'/>
+      <ReviewForm />
 
     </section>
   );

@@ -58,7 +58,7 @@ export const fetchSimilarFilms = createAsyncThunk<void, string, {
   async (_arg, {dispatch, extra: api}) => {
     const {data} = await api.get<FilmCards[]>(`${APIRoute.Films}/${_arg}${APIRoute.SimilarFilms}`);
     // return data;
-    dispatch(loadSimilarFilms(data));
+    dispatch(loadSimilarFilms({films: data, id: _arg}));
   },
 );
 

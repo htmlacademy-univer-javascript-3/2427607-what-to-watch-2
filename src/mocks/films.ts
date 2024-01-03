@@ -1,14 +1,11 @@
 import {FilmCards} from '../types/film';
 
 export const filmCardData: FilmCards = {
-  id: 20,
-  backgroundImage:
-    'img/bg-the-grand-budapest-hotel.jpg',
+  id: '20',
   previewImage: 'img/the-grand-budapest-hotel-poster.jpg',
   previewVideoLink: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
   name: 'The Grand Budapest Hotel',
   genre: 'Drama',
-  released: 2014
 };
 
 // export const catalogFilmCards: FilmCards[] = [

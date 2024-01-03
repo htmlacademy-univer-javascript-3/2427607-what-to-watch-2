@@ -20,11 +20,11 @@ export const MainPage = ()=> {
     dispatch(fetchFilm(allFilms[0].id));
   }
   const [activeGenre, setActiveGenre] = useState({category: 'All genres', genre: 'All genres'});
-  const [filmListByGenre, setFilmListByGenre] = useState([]);
+  const [filmListByGenre, setFilmListByGenre] = useState(allFilms ?? []);
   const [clickCount, setCount] = useState(1);
   useEffect(()=> {
     setFilmListByGenre(getFilmsByGenre(activeGenre.genre, allFilms).slice(0, FILM_ON_ONE_PAGE * clickCount));
-  }, [activeGenre, clickCount]);
+  }, [activeGenre.genre, clickCount]);
 
   if (!filmData){
     return (
