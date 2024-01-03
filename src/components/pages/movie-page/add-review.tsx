@@ -1,10 +1,19 @@
 import {Header} from '../../header';
 import {Link} from 'react-router-dom';
 import {ReviewForm} from './review-form';
-import {useAppSelector} from '../../../hooks';
+import {useAppDispatch, useAppSelector} from '../../../hooks';
+import {Spinner} from '../../spinner';
+import {fetchFilm} from '../../../store/api-actions';
 
 export const AddReview = ()=> {
-  const filmData = useAppSelector((state) => state.updateStore.filmCardData);
+  const filmData = useAppSelector((state) => state.updateStore.fullFilms['6c84c13e-e4e0-4bcc-bdb0-bd25b1ab5d8d']);
+  const dispatch = useAppDispatch();
+  if (!filmData){
+    dispatch(fetchFilm('6c84c13e-e4e0-4bcc-bdb0-bd25b1ab5d8d'));
+    return (
+      <Spinner />
+    );
+  }
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
@@ -28,11 +37,11 @@ export const AddReview = ()=> {
         </Header>
 
         <div className="film-card__poster film-card__poster--small">
-          <img src={filmData.previewImage} alt={`${filmData.name}_poster`} width="218" height="327"/>
+          <img src={filmData.posterImage} alt={filmData.name} width="218" height="327"/>
         </div>
       </div>
 
-      <ReviewForm/>
+      <ReviewForm id={'6c84c13e-e4e0-4bcc-bdb0-bd25b1ab5d8d'}/>
 
     </section>
   );

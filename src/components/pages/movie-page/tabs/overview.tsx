@@ -6,7 +6,7 @@ export const Overview = (props: OverviewProps) => (
       <div className="film-rating__score">{props.rating}</div>
       <p className="film-rating__meta">
         <span className="film-rating__level">{props.ratingDescription}</span>
-        <span className="film-rating__count">{props.numberOfVotes} ratings</span>
+        <span className="film-rating__count">{props.scoresCount} ratings</span>
       </p>
     </div>
 
@@ -16,7 +16,8 @@ export const Overview = (props: OverviewProps) => (
       <p className="film-card__director"><strong>Director: {props.director}</strong></p>
 
       <p className="film-card__starring">
-        <strong>Starring: {props.starring}
+        <strong>
+          Starring: {props.starring}
         </strong>
       </p>
     </div>

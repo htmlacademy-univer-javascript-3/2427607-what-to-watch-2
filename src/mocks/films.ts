@@ -224,7 +224,7 @@ export const filmCardData: FilmCards = {
 //   },
 // ];
 
-export const getFilmsByGenre = (genre: string) => [].filter((film: FilmCards)=> genre === 'All genres' ? true : film.genre === genre);
+export const getFilmsByGenre = (genre: string, allFilms: FilmCards[]) => allFilms.filter((film: FilmCards)=> genre === 'All genres' ? true : film.genre === genre);
 
 // export const getFilmsByGenre = createAction('GET_FILMS_BY_GENRE', (genre: string) => ({
 //   payload: genre,

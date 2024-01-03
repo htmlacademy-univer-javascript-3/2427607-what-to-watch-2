@@ -14,9 +14,10 @@ import {AppRoute, AuthorizationStatus} from '../consts';
 
 export const App = ()=> {
   const authorizationStatus = useAppSelector((state) => state.updateStore.authorizationStatus);
-  const isAuthChecked = authorizationStatus === AuthorizationStatus.Auth;
-  const isFilmsDataLoading = useAppSelector((state) => !state.updateStore.isLoading);
-  if (!isFilmsDataLoading && isAuthChecked) {
+  const isAuthChecked = authorizationStatus !== AuthorizationStatus.Unknown;
+  const isFilmsDataLoading = useAppSelector((state) => state.updateStore.isLoading);
+  const allFilms = useAppSelector((state) => state.updateStore.films);
+  if (isFilmsDataLoading || !isAuthChecked) {
     return (
       <Spinner />
     );
@@ -34,7 +35,7 @@ export const App = ()=> {
           }
           />
           <Route path={AppRoute.Film}>
-            <Route index element={<MoviePage />}/>
+            <Route index element={<MoviePage id={allFilms[0]?.id ?? ''}/>}/>
             <Route path={AppRoute.Review} element={<AddReview />}/>
           </Route>
           <Route path={AppRoute.Player} element={<Player />}/>
