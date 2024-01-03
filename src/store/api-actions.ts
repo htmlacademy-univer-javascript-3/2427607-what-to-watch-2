@@ -32,7 +32,7 @@ export const fetchFilms = createAsyncThunk<void, undefined, {
   },
 );
 
-export const fetchFilm = createAsyncThunk<Film, string, {
+export const fetchFilm = createAsyncThunk<void, string, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
@@ -40,9 +40,9 @@ export const fetchFilm = createAsyncThunk<Film, string, {
   'data/loadFilmById',
   async (_arg, {dispatch, extra: api}) => {
     try {
-      const {data} = await api.get<FilmCards[]>(`${APIRoute.Films}/${_arg}`);
+      const {data} = await api.get<Film>(`${APIRoute.Films}/${_arg}`);
       dispatch(loadFilmById(data));
-      return data;
+      // return data;
     } catch {
       dispatch(redirectToRoute(AppRoute.Other));
     }
@@ -82,7 +82,7 @@ export const addComment = createAsyncThunk<void, {comment: string; rating: numbe
 }>(
   'data/addComment',
   async (_arg, {dispatch, extra: api}) => {
-    const {data} = await api.post<FilmCards[]>(`${APIRoute.Comments}/6c84c13e-e4e0-4bcc-bdb0-bd25b1ab5d8d`);
+    const {data} = await api.post<Comment>(`${APIRoute.Comments}/6c84c13e-e4e0-4bcc-bdb0-bd25b1ab5d8d`);
     // return data;
     dispatch(addCommentById({comment: data, id: '6c84c13e-e4e0-4bcc-bdb0-bd25b1ab5d8d'}));
   },
