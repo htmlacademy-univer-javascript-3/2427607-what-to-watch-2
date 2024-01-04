@@ -25,7 +25,7 @@ export const allFilmsData = createSlice({
       // .addCase(setGenre, (state, action) => {
       //   state.activeGenre = action.payload;
       // })
-      .addCase(fetchFilms.pending, (state, action) => {
+      .addCase(fetchFilms.pending, (state) => {
         state.isLoading = true;
         state.hasError = false;
       })
@@ -33,7 +33,7 @@ export const allFilmsData = createSlice({
         state.films = action.payload;
         state.isLoading = false;
       })
-      .addCase(fetchFilms.rejected, (state, action) => {
+      .addCase(fetchFilms.rejected, (state) => {
         state.isLoading = false;
         state.hasError = true;
       });

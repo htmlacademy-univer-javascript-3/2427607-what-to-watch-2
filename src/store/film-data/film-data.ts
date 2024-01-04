@@ -23,7 +23,7 @@ export const filmData = createSlice({
       .addCase(fetchFilm.fulfilled, (state, action) => {
         state.film = action.payload;
       })
-      .addCase(fetchFilm.rejected, (state, action) => {
+      .addCase(fetchFilm.rejected, (state) => {
         state.film = null;
         // dispatch(redirectToRoute(AppRoute.Other));
       })
