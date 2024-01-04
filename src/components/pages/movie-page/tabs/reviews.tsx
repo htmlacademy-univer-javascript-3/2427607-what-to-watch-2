@@ -1,12 +1,15 @@
 import {v4 as uuid} from 'uuid';
+import {memo} from 'react';
+import dateFormat from 'dateformat';
+
 import {Comment} from '../../../../types/film';
 import {useAppDispatch, useAppSelector} from '../../../../hooks';
 import {fetchCommentsById} from '../../../../store/api-actions';
 import {Spinner} from '../../../spinner';
-import dateFormat from 'dateformat';
+import {getComments} from '../../../../store/film-data/selectors';
 
-export const Reviews = (props: {id: string}) => {
-  const comments: Comment[] = useAppSelector((state) => state.updateStore.commentsMap[props.id]);
+const Reviews = (props: {id: string}) => {
+  const comments: Comment[] = useAppSelector(getComments);
   const dispatch = useAppDispatch();
   if (!comments) {
     dispatch(fetchCommentsById(props.id));
@@ -47,3 +50,5 @@ export const Reviews = (props: {id: string}) => {
     </div>
   );
 };
+
+export const MemoizedReviews = memo(Reviews);

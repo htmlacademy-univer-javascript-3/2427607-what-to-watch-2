@@ -1,6 +1,7 @@
 import {DetailsProps} from '../../../../types/tabs';
+import {memo} from 'react';
 
-export const Details = (props: DetailsProps) => (
+const Details = (props: DetailsProps) => (
   <div className="film-card__text film-card__row">
     <div className="film-card__text-col">
       <p className="film-card__details-item">
@@ -29,3 +30,5 @@ export const Details = (props: DetailsProps) => (
     </div>
   </div>
 );
+
+export const MemoizedDetails = memo(Details);

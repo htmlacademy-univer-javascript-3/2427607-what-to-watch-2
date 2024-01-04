@@ -21,3 +21,9 @@ export enum AppRoute {
   Main = '/',
   Other = '/*'
 }
+
+export enum NameSpace {
+  Film = 'FILM',
+  Films = 'FILMS',
+  User = 'USER',
+}

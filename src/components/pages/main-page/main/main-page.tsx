@@ -10,11 +10,13 @@ import {useAppDispatch, useAppSelector} from '../../../../hooks';
 import {fetchFilm} from '../../../../store/api-actions';
 import {Spinner} from '../../../spinner';
 import {getFilmsByGenre} from '../../../../mocks/films';
+import {getFilms} from '../../../../store/all-films-data/selectors';
+import {getFilm} from '../../../../store/film-data/selectors';
 
 const FILM_ON_ONE_PAGE = 8;
 export const MainPage = ()=> {
-  const allFilms = useAppSelector((state) => state.updateStore.films);
-  const filmData = useAppSelector((state) => state.updateStore.fullFilms[allFilms[0].id]);
+  const allFilms = useAppSelector(getFilms);
+  const filmData = useAppSelector(getFilm);
   const dispatch = useAppDispatch();
   if (!filmData) {
     dispatch(fetchFilm(allFilms[0].id));

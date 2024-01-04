@@ -1,14 +1,4 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {
-  addCommentById,
-  loadCommentsById,
-  loadFilmById,
-  loadFilms,
-  loadSimilarFilms,
-  requireAuth,
-  setGenre,
-  setLoadingStatus
-} from '../action';
 import {playerData} from '../../mocks/player';
 import {AuthorizationStatus} from '../../consts';
 import {Film, FilmCards, Comment} from '../../types/film';

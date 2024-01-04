@@ -4,9 +4,10 @@ import {ReviewForm} from './review-form';
 import {useAppDispatch, useAppSelector} from '../../../hooks';
 import {Spinner} from '../../spinner';
 import {fetchFilm} from '../../../store/api-actions';
+import {getFilm} from '../../../store/film-data/selectors';
 
 export const AddReview = ()=> {
-  const filmData = useAppSelector((state) => state.updateStore.fullFilms['6c84c13e-e4e0-4bcc-bdb0-bd25b1ab5d8d']);
+  const filmData = useAppSelector(getFilm);
   const dispatch = useAppDispatch();
   if (!filmData){
     dispatch(fetchFilm('6c84c13e-e4e0-4bcc-bdb0-bd25b1ab5d8d'));

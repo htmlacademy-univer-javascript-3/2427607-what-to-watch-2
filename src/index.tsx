@@ -9,7 +9,6 @@ import {ToastContainer} from 'react-toastify';
 import HistoryRouter from './components/history-route/history-route';
 import 'react-toastify/dist/ReactToastify.css';
 
-// store.dispatch(fetchFilms());
 store.dispatch(fetchFilms());
 store.dispatch(checkAuthAction());
 

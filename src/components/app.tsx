@@ -10,13 +10,15 @@ import {ErrorPage} from './pages/error-page';
 import {PrivateRoute} from './private-route';
 import {Spinner} from './spinner';
 import {useAppSelector} from '../hooks';
-import {AppRoute, AuthorizationStatus} from '../consts';
+import {AppRoute} from '../consts';
+import {getAuthCheckedStatus, getAuthorizationStatus} from '../store/user-process/selectors';
+import {getFilms, getIsLoading} from '../store/all-films-data/selectors';
 
 export const App = ()=> {
-  const authorizationStatus = useAppSelector((state) => state.updateStore.authorizationStatus);
-  const isAuthChecked = authorizationStatus !== AuthorizationStatus.Unknown;
-  const isFilmsDataLoading = useAppSelector((state) => state.updateStore.isLoading);
-  const allFilms = useAppSelector((state) => state.updateStore.films);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  const isAuthChecked = useAppSelector(getAuthCheckedStatus);
+  const isFilmsDataLoading = useAppSelector(getIsLoading);
+  const allFilms = useAppSelector(getFilms);
   if (isFilmsDataLoading || !isAuthChecked) {
     return (
       <Spinner />

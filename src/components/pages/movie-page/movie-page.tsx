@@ -5,21 +5,21 @@ import {Header} from '../../header';
 import {Tabs} from '../../tabs';
 import {Link} from 'react-router-dom';
 import {useEffect, useState} from 'react';
-import {Details} from './tabs/details';
-import {Overview} from './tabs/overview';
-import {Reviews} from './tabs/reviews';
+import {MemoizedDetails} from './tabs/details';
+import {MemoizedOverview} from './tabs/overview';
+import {MemoizedReviews} from './tabs/reviews';
 import {FilmList} from '../main-page/film-list';
 import {useAppDispatch, useAppSelector} from '../../../hooks';
 import {fetchFilm, fetchSimilarFilms} from '../../../store/api-actions';
 import {Film} from '../../../types/film';
 import {Spinner} from '../../spinner';
-import {AuthorizationStatus} from '../../../consts';
+import {getFilm, getSimilarFilms} from '../../../store/film-data/selectors';
+import {isUserAuth} from '../../../store/user-process/selectors';
 
 export const MoviePage = (props: {id: string}) => {
-  const authorizationStatus = useAppSelector((state) => state.updateStore.authorizationStatus);
-  const isAuthChecked = authorizationStatus === AuthorizationStatus.Auth;
-  const filmData: Film = useAppSelector((state) => state.updateStore.fullFilms[props.id]);
-  const similarFilms = useAppSelector((state) => state.updateStore.similarFilms[props.id]);
+  const isAuth = useAppSelector(isUserAuth);
+  const filmData: Film | null = useAppSelector(getFilm);
+  const similarFilms = useAppSelector(getSimilarFilms);
   const [activeTab, setActiveTab] = useState(0);
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -40,7 +40,7 @@ export const MoviePage = (props: {id: string}) => {
   const getContentByType = () => {
     switch (activeTab) {
       case 1: return (
-        <Details
+        <MemoizedDetails
           director={filmData.director}
           runTime={filmData.runTime}
           genre={filmData.genre}
@@ -49,10 +49,10 @@ export const MoviePage = (props: {id: string}) => {
         />
       );
       case 2: return (
-        <Reviews id={props.id} />
+        <MemoizedReviews id={props.id} />
       );
       default: return (
-        <Overview
+        <MemoizedOverview
           description={filmData.description}
           director={filmData.director}
           starring={filmData.starring}
@@ -87,7 +87,7 @@ export const MoviePage = (props: {id: string}) => {
               <div className="film-card__buttons">
                 <PlayButton className="btn btn--play film-card__button"/>
                 <AddToListButton/>
-                {isAuthChecked && <Link to='review' className="btn film-card__button">Add review</Link>}
+                {isAuth && <Link to='review' className="btn film-card__button">Add review</Link>}
               </div>
             </div>
           </div>

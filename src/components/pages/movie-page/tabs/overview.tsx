@@ -1,6 +1,7 @@
+import {memo} from 'react';
 import {OverviewProps} from '../../../../types/tabs';
 
-export const Overview = (props: OverviewProps) => (
+const Overview = (props: OverviewProps) => (
   <>
     <div className="film-rating">
       <div className="film-rating__score">{props.rating}</div>
@@ -23,3 +24,5 @@ export const Overview = (props: OverviewProps) => (
     </div>
   </>
 );
+
+export const MemoizedOverview = memo(Overview);
