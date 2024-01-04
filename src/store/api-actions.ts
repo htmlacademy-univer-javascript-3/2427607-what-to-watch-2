@@ -8,7 +8,7 @@ import {AuthData} from '../types/auth-data';
 import {UserData} from '../types/user-data';
 import {dropToken, saveToken} from '../services/token';
 
-export const fetchFilms = createAsyncThunk<void, undefined, {
+export const fetchFilms = createAsyncThunk<FilmCards[], undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
@@ -32,7 +32,7 @@ export const fetchFilm = createAsyncThunk<Film | null, string, {
   },
 );
 
-export const fetchSimilarFilms = createAsyncThunk<void, string, {
+export const fetchSimilarFilms = createAsyncThunk<FilmCards[], string, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
@@ -44,7 +44,7 @@ export const fetchSimilarFilms = createAsyncThunk<void, string, {
   },
 );
 
-export const fetchCommentsById = createAsyncThunk<void, string, {
+export const fetchCommentsById = createAsyncThunk<Comment[], string, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
@@ -56,7 +56,7 @@ export const fetchCommentsById = createAsyncThunk<void, string, {
   },
 );
 
-export const addComment = createAsyncThunk<void, {comment: string; rating: number}, {
+export const addComment = createAsyncThunk<Comment, {comment: string; rating: number}, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
