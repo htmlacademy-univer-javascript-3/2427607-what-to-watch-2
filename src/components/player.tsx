@@ -1,8 +1,9 @@
 import {PlayButton} from './buttons/play-button';
 import {useAppSelector} from '../hooks';
 import {getPlayer} from '../store/film-data/selectors';
+import {memo} from 'react';
 
-export const Player = ()=> {
+const Player = ()=> {
   const playerData = useAppSelector(getPlayer);
   return (
     <div className="player">
@@ -34,3 +35,5 @@ export const Player = ()=> {
     </div>
   );
 };
+
+export const VideoPlayer = memo(Player);

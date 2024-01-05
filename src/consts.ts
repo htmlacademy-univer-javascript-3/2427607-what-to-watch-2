@@ -28,4 +28,11 @@ export enum NameSpace {
   Film = 'FILM',
   Films = 'FILMS',
   User = 'USER',
+  App = 'APP',
 }
+
+export const ALL_GENRES = 'All genres';
+
+export const NOT_FOUND_MESSAGE = 'Request failed with status code 404';
+
+export const NOT_FOUND_URL = '/not-found';

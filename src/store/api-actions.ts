@@ -68,6 +68,18 @@ export const fetchFavoriteFilms = createAsyncThunk<FilmCards[], undefined, {
   },
 );
 
+export const setIsFavorite = createAsyncThunk<Film, { filmId: string; status: number }, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'films/setIsFavorite',
+  async ({ filmId, status }: { filmId: string; status: number }, { extra: api }) => {
+    const {data} = await api.post<Film>(`${APIRoute.Favorite}/${filmId}/${status}`);
+    return data;
+  }
+);
+
 export const fetchCommentsById = createAsyncThunk<Comment[], string, {
   dispatch: AppDispatch;
   state: State;
@@ -127,4 +139,13 @@ export const logoutAction = createAsyncThunk<void, undefined, {
     dropToken();
     dispatch(redirectToRoute(AppRoute.Login));
   },
+);
+
+export const clearRequestCount = createAsyncThunk<void, undefined, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'app/clearRequestCount',
+  () => undefined,
 );

@@ -1,18 +1,9 @@
 import {v4 as uuid} from 'uuid';
-import {memo, useEffect} from 'react';
 import dateFormat from 'dateformat';
 
 import {Comment} from '../../../../types/film';
-import {useAppDispatch, useAppSelector} from '../../../../hooks';
-import {fetchCommentsById} from '../../../../store/api-actions';
-import {getComments} from '../../../../store/film-data/selectors';
 
-const Reviews = (props: {id: string}) => {
-  const comments: Comment[] = useAppSelector(getComments);
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(fetchCommentsById(props.id));
-  }, [props.id]);
+export const Reviews = ({comments}: {comments: Comment[]}) => {
 
   const firstRatings = comments.slice(0, comments.length / 2);
   const secondRatings = comments.slice(comments.length / 2, comments.length);
@@ -47,5 +38,3 @@ const Reviews = (props: {id: string}) => {
     </div>
   );
 };
-
-export const MemoizedReviews = memo(Reviews);

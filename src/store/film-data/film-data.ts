@@ -1,19 +1,18 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {NameSpace} from '../../consts';
 import {Comment, Film, FilmCards} from '../../types/film';
-import {addComment, fetchCommentsById, fetchFilm, fetchSimilarFilms} from '../api-actions';
-import {PlayerProps} from "../../types/player";
-import {playerData} from "../../mocks/player";
+import {addComment, fetchCommentsById, fetchFilm, fetchPromoFilm, fetchSimilarFilms} from '../api-actions';
+import {PlayerProps} from '../../types/player';
+import {playerData} from '../../mocks/player';
 
 type initialState = {
-  film: Film | null;
+  promoFilm?: Film;
   similarFilms: FilmCards[];
   comments: Comment[];
   playerData: PlayerProps;
 };
 
 const initialState: initialState = {
-  film: null,
   similarFilms: [],
   comments: [],
   playerData: playerData
@@ -25,10 +24,10 @@ export const filmData = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchFilm.fulfilled, (state, action) => {
-        state.film = action.payload;
+        state.promoFilm = action.payload;
       })
       .addCase(fetchFilm.rejected, (state) => {
-        state.film = null;
+        state.promoFilm = null;
         // dispatch(redirectToRoute(AppRoute.Other));
       })
       .addCase(fetchCommentsById.fulfilled, (state, action) => {
@@ -43,6 +42,9 @@ export const filmData = createSlice({
       })
       .addCase(fetchSimilarFilms.fulfilled, (state, action) => {
         state.similarFilms = action.payload;
+      })
+      .addCase(fetchPromoFilm.fulfilled, (state, action) => {
+        state.promoFilm = action.payload;
       });
   }
 });

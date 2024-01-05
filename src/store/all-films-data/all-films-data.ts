@@ -1,51 +1,59 @@
-import {createSlice} from '@reduxjs/toolkit';
-import {NameSpace} from '../../consts';
-import {Film, FilmCards} from '../../types/film';
-import {fetchFavoriteFilms, fetchFilms, fetchPromoFilm} from '../api-actions';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {ALL_GENRES, NameSpace} from '../../consts';
+import {FilmCards, PortionSizes} from '../../types/film';
+import {fetchFavoriteFilms, fetchFilms} from '../api-actions';
 
 type initialState = {
   activeGenre: string;
+  genres: string[];
   films: FilmCards[];
+  filteredFilms: FilmCards[];
   favoriteFilms: FilmCards[];
-  promo: Film | null;
-  isLoading: boolean;
   hasError: boolean;
 };
 
 const initialState: initialState = {
-  activeGenre: '',
+  activeGenre: ALL_GENRES,
+  genres: [ALL_GENRES],
   films: [],
+  filteredFilms: [],
   favoriteFilms: [],
-  promo: null,
-  isLoading: false,
   hasError: false,
 };
 export const allFilmsData = createSlice({
   name: NameSpace.Films,
   initialState,
-  reducers: {},
+  reducers: {
+    setSelectedGenre: (state, action: PayloadAction<string>) => {
+      const filteredFilms =
+        action.payload === ALL_GENRES
+          ? state.films
+          : state.films.filter((film) => film.genre === action.payload);
+
+      return (
+        {
+          ...state,
+          activeGenre: action.payload,
+          filteredFilms,
+          genres: [ALL_GENRES, ...new Set(action.payload.map(({ genre }) => genre))].slice(0, PortionSizes.Genres)
+        }
+      );
+    },
+  },
   extraReducers(builder) {
     builder
-      // .addCase(setGenre, (state, action) => {
-      //   state.activeGenre = action.payload;
-      // })
       .addCase(fetchFilms.pending, (state) => {
-        state.isLoading = true;
         state.hasError = false;
       })
       .addCase(fetchFilms.fulfilled, (state, action) => {
         state.films = action.payload;
-        state.isLoading = false;
       })
       .addCase(fetchFilms.rejected, (state) => {
-        state.isLoading = false;
         state.hasError = true;
       })
       .addCase(fetchFavoriteFilms.fulfilled, (state, action) => {
         state.favoriteFilms = action.payload;
-      })
-      .addCase(fetchPromoFilm.fulfilled, (state, action) => {
-        state.promo = action.payload;
       });
   }
 });
+export const { setSelectedGenre } = allFilmsData.actions;

@@ -11,7 +11,6 @@ export type OverviewProps = {
   director: string;
   starring: string[];
   rating: number;
-  ratingDescription: 'Bad' | 'Normal' | 'Good' | 'Very good' | 'Awesome';
   scoresCount: number;
 };
 

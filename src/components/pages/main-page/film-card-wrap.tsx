@@ -2,7 +2,7 @@ import { AddToListButton} from '../../buttons/add-to-list-button';
 import {PlayButton} from '../../buttons/play-button';
 import {Film} from '../../../types/film';
 
-export const FilmCardWrap = (props: Film)=> (
+export const FilmCardWrap = (props: Film & {favLength?: number})=> (
   <div className="film-card__wrap">
     <div className="film-card__info">
       <div className="film-card__poster">
@@ -20,7 +20,7 @@ export const FilmCardWrap = (props: Film)=> (
 
         <div className="film-card__buttons">
           <PlayButton className="btn btn--play film-card__button"/>
-          <AddToListButton/>
+          <AddToListButton favLength={props.favLength}/>
         </div>
       </div>
     </div>
