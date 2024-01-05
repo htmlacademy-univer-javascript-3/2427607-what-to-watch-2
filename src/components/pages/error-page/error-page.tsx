@@ -1,5 +1,5 @@
 import {Fragment} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {useAppDispatch} from '../../../hooks';
 import {AppRoute} from '../../../consts';
 import {clearRequestCount} from '../../../store/api-actions';

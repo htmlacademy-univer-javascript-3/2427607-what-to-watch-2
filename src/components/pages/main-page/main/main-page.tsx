@@ -1,34 +1,28 @@
 import {useEffect, useState} from 'react';
+import './main-page.css';
 import {Header} from '../../../header';
 import {Footer} from '../../../footer';
 import {FilmCardWrap} from '../film-card-wrap';
 import {ShowMoreButton} from '../../../buttons/show-more-button';
 import {GenresList} from '../genres-list';
 import {FilmList} from '../film-list';
-import './main-page.css';
 import {useAppDispatch, useAppSelector} from '../../../../hooks';
-import {fetchPromoFilm} from '../../../../store/api-actions';
-import {getFilmsByGenre} from '../../../../mocks/films';
-import {getFilms} from '../../../../store/all-films-data/selectors';
-import {getFilm} from '../../../../store/film-data/selectors';
 import {useFavoriteFilms} from '../../../../hooks/use-favorite-films';
+import {fetchPromoFilm} from '../../../../store/api-actions';
+import {getFilmsByGenre} from '../../../../store/all-films-data/selectors';
+import {getFilm} from '../../../../store/film-data/selectors';
 import {RequestPending} from '../../../pending-request/pending-request';
+import {PortionSizes} from '../../../../types/film';
 
-const FILM_ON_ONE_PAGE = 8;
 export const MainPage = ()=> {
   const { favoriteFilms } = useFavoriteFilms();
-  const allFilms = useAppSelector(getFilms);
   const filmData = useAppSelector(getFilm);
+  const filmsByGenre = useAppSelector(getFilmsByGenre);
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchPromoFilm());
   }, [dispatch]);
-  const [activeGenre, setActiveGenre] = useState({category: 'All genres', genre: 'All genres'});
-  const [filmListByGenre, setFilmListByGenre] = useState(allFilms ?? []);
   const [clickCount, setCount] = useState(1);
-  useEffect(()=> {
-    setFilmListByGenre(getFilmsByGenre(activeGenre.genre, allFilms).slice(0, FILM_ON_ONE_PAGE * clickCount));
-  }, [activeGenre.genre, clickCount]);
 
   return (
     <RequestPending>
@@ -49,11 +43,11 @@ export const MainPage = ()=> {
           <section className="catalog">
             <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-            <GenresList activeGenre={activeGenre.category} setActiveGenre={setActiveGenre}/>
+            <GenresList/>
 
-            <FilmList films={filmListByGenre}/>
+            <FilmList films={filmsByGenre}/>
 
-            <div className={filmListByGenre?.length < clickCount * FILM_ON_ONE_PAGE ? 'non_visible' : ''}>
+            <div className={filmsByGenre?.length < clickCount * PortionSizes.FilmList ? 'non_visible' : ''}>
               <ShowMoreButton setCount={() => setCount(clickCount + 1)}/>
             </div>
           </section>

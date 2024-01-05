@@ -1,7 +1,14 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {NameSpace} from '../../consts';
 import {Comment, Film, FilmCards} from '../../types/film';
-import {addComment, fetchCommentsById, fetchFilm, fetchPromoFilm, fetchSimilarFilms} from '../api-actions';
+import {
+  addComment,
+  fetchCommentsById,
+  fetchFilm,
+  fetchPromoFilm,
+  fetchSimilarFilms,
+  setIsFavorite
+} from '../api-actions';
 import {PlayerProps} from '../../types/player';
 import {playerData} from '../../mocks/player';
 
@@ -27,8 +34,7 @@ export const filmData = createSlice({
         state.promoFilm = action.payload;
       })
       .addCase(fetchFilm.rejected, (state) => {
-        state.promoFilm = null;
-        // dispatch(redirectToRoute(AppRoute.Other));
+        state.promoFilm = undefined;
       })
       .addCase(fetchCommentsById.fulfilled, (state, action) => {
         state.comments = action.payload;
@@ -44,6 +50,9 @@ export const filmData = createSlice({
         state.similarFilms = action.payload;
       })
       .addCase(fetchPromoFilm.fulfilled, (state, action) => {
+        state.promoFilm = action.payload;
+      })
+      .addCase(setIsFavorite.fulfilled, (state, action) => {
         state.promoFilm = action.payload;
       });
   }

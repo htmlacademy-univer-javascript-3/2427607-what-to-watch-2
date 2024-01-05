@@ -7,7 +7,7 @@ type initialState = {
   activeGenre: string;
   genres: string[];
   films: FilmCards[];
-  filteredFilms: FilmCards[];
+  filmsByGenre: FilmCards[];
   favoriteFilms: FilmCards[];
   hasError: boolean;
 };
@@ -16,7 +16,7 @@ const initialState: initialState = {
   activeGenre: ALL_GENRES,
   genres: [ALL_GENRES],
   films: [],
-  filteredFilms: [],
+  filmsByGenre: [],
   favoriteFilms: [],
   hasError: false,
 };
@@ -25,7 +25,7 @@ export const allFilmsData = createSlice({
   initialState,
   reducers: {
     setSelectedGenre: (state, action: PayloadAction<string>) => {
-      const filteredFilms =
+      const filmsByGenre =
         action.payload === ALL_GENRES
           ? state.films
           : state.films.filter((film) => film.genre === action.payload);
@@ -34,8 +34,7 @@ export const allFilmsData = createSlice({
         {
           ...state,
           activeGenre: action.payload,
-          filteredFilms,
-          genres: [ALL_GENRES, ...new Set(action.payload.map(({ genre }) => genre))].slice(0, PortionSizes.Genres)
+          filmsByGenre,
         }
       );
     },
@@ -47,6 +46,9 @@ export const allFilmsData = createSlice({
       })
       .addCase(fetchFilms.fulfilled, (state, action) => {
         state.films = action.payload;
+        state.filmsByGenre = action.payload;
+        state.activeGenre = ALL_GENRES;
+        state.genres = [ALL_GENRES, ...new Set(action.payload.map(({ genre }) => genre))].slice(0, PortionSizes.Genres);
       })
       .addCase(fetchFilms.rejected, (state) => {
         state.hasError = true;
