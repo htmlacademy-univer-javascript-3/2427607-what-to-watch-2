@@ -25,6 +25,9 @@ export const MoviePage = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   const getContentByType = () => {
+    if (!filmData){
+      return;
+    }
     switch (activeTab) {
       case 1: return (
         <MemoizedDetails
@@ -91,7 +94,7 @@ export const MoviePage = () => {
 
                 <div className="film-card__desc">
                   <Tabs activeTab={activeTab} setActiveTab={setActiveTab}/>
-                  { getContentByType() }
+                  { filmData && getContentByType() }
                 </div>
               </div>
             </div>
