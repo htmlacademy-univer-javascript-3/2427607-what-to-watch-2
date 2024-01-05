@@ -20,7 +20,7 @@ export const fetchFilms = createAsyncThunk<FilmCards[], undefined, {
   },
 );
 
-export const fetchFilm = createAsyncThunk<Film | null, string, {
+export const fetchFilm = createAsyncThunk<Film, string, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
@@ -32,7 +32,7 @@ export const fetchFilm = createAsyncThunk<Film | null, string, {
   },
 );
 
-export const fetchPromoFilm = createAsyncThunk<Film | null, undefined, {
+export const fetchPromoFilm = createAsyncThunk<Film, undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
