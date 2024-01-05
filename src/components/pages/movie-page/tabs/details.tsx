@@ -10,7 +10,9 @@ const Details = (props: DetailsProps) => (
       </p>
       <p className="film-card__details-item">
         <strong className="film-card__details-name">Starring</strong>
-        <span className="film-card__details-value">{props.starring}</span>
+        <span className="film-card__details-value">
+          {props.starring.join(', ')}
+        </span>
       </p>
     </div>
 

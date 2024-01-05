@@ -1,22 +1,32 @@
 import {Header} from '../../header';
 import {Footer} from '../../footer';
 import {FilmList} from '../main-page/film-list';
+import {useAppDispatch, useAppSelector} from '../../../hooks';
+import {fetchFavoriteFilms} from '../../../store/api-actions';
+import {getFavoriteFilms} from '../../../store/all-films-data/selectors';
 
-const myFilms = [].slice(0, 9);
-export const MyList = ()=> (
-  <div className="user-page">
-    <Header classname="user-page__head">
-      <h1 className="page-title user-page__title">My list <span className="user-page__film-count">9</span></h1>
-    </Header>
+export const MyList = ()=> {
+  const favoriteFilms = useAppSelector(getFavoriteFilms);
+  const dispatch = useAppDispatch();
 
-    <section className="catalog">
-      <h2 className="catalog__title visually-hidden">Catalog</h2>
+  if (!favoriteFilms) {
+    dispatch(fetchFavoriteFilms());
+  }
+  return (
+    <div className="user-page">
+      <Header classname="user-page__head">
+        <h1 className="page-title user-page__title">My list <span className="user-page__film-count">9</span></h1>
+      </Header>
 
-      <div className="catalog__films-list">
-        <FilmList films={myFilms} onlyImage/>
-      </div>
-    </section>
+      <section className="catalog">
+        <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-    <Footer/>
-  </div>
-);
+        <div className="catalog__films-list">
+          <FilmList films={favoriteFilms} onlyImage/>
+        </div>
+      </section>
+
+      <Footer/>
+    </div>
+  );
+};

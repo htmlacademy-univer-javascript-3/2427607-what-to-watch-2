@@ -3,7 +3,7 @@ import {PlayButton} from '../../buttons/play-button';
 import {AddToListButton} from '../../buttons/add-to-list-button';
 import {Header} from '../../header';
 import {Tabs} from '../../tabs';
-import {Link} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import {useEffect, useState} from 'react';
 import {MemoizedDetails} from './tabs/details';
 import {MemoizedOverview} from './tabs/overview';
@@ -15,27 +15,36 @@ import {Film} from '../../../types/film';
 import {Spinner} from '../../spinner';
 import {getFilm, getSimilarFilms} from '../../../store/film-data/selectors';
 import {isUserAuth} from '../../../store/user-process/selectors';
+import {ErrorPage} from '../error-page';
 
-export const MoviePage = (props: {id: string}) => {
+export const MoviePage = () => {
+  const {id} = useParams();
   const isAuth = useAppSelector(isUserAuth);
   const filmData: Film | null = useAppSelector(getFilm);
   const similarFilms = useAppSelector(getSimilarFilms);
   const [activeTab, setActiveTab] = useState(0);
   const dispatch = useAppDispatch();
+
   useEffect(() => {
-    if (!filmData) {
-      dispatch(fetchFilm(props.id));
+    if (!id) {
+      return;
     }
-    if (!similarFilms) {
-      dispatch(fetchSimilarFilms(props.id));
-    }
-  }, [props.id]);
+    dispatch(fetchFilm(id));
+    dispatch(fetchSimilarFilms(id));
+  }, [id]);
+  const moreFilms = (similarFilms ?? []).slice(0,4);
+
+  if (!id) {
+    return (
+      <ErrorPage/>
+    );
+  }
+
   if (!filmData) {
     return (
       <Spinner />
     );
   }
-  const moreFilms = (similarFilms ?? []).slice(0,4);
 
   const getContentByType = () => {
     switch (activeTab) {
@@ -49,7 +58,7 @@ export const MoviePage = (props: {id: string}) => {
         />
       );
       case 2: return (
-        <MemoizedReviews id={props.id} />
+        <MemoizedReviews id={id} />
       );
       default: return (
         <MemoizedOverview

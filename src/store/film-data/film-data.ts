@@ -2,17 +2,21 @@ import {createSlice} from '@reduxjs/toolkit';
 import {NameSpace} from '../../consts';
 import {Comment, Film, FilmCards} from '../../types/film';
 import {addComment, fetchCommentsById, fetchFilm, fetchSimilarFilms} from '../api-actions';
+import {PlayerProps} from "../../types/player";
+import {playerData} from "../../mocks/player";
 
 type initialState = {
   film: Film | null;
   similarFilms: FilmCards[];
   comments: Comment[];
+  playerData: PlayerProps;
 };
 
 const initialState: initialState = {
   film: null,
   similarFilms: [],
   comments: [],
+  playerData: playerData
 };
 export const filmData = createSlice({
   name: NameSpace.Film,

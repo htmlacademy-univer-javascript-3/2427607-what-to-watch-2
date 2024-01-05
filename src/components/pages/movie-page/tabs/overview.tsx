@@ -18,7 +18,7 @@ const Overview = (props: OverviewProps) => (
 
       <p className="film-card__starring">
         <strong>
-          Starring: {props.starring}
+          Starring: {props.starring.join(', ')}
         </strong>
       </p>
     </div>

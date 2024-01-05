@@ -1,8 +1,9 @@
 import {PlayButton} from './buttons/play-button';
 import {useAppSelector} from '../hooks';
+import {getPlayer} from '../store/film-data/selectors';
 
 export const Player = ()=> {
-  const playerData = useAppSelector((state) => state.updateStore.playerData);
+  const playerData = useAppSelector(getPlayer);
   return (
     <div className="player">
       <video src={playerData.src} className="player__video" poster={playerData.poster}></video>
