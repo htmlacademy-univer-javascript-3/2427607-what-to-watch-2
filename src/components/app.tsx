@@ -3,25 +3,27 @@ import {Route, Routes, Outlet } from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
 import {SignIn} from './pages/sing-in-page/sign-in';
 import {MyList} from './pages/my-list-page/my-list';
-import {Player} from './player';
+import {VideoPlayer} from './player';
 import {MoviePage} from './pages/movie-page/movie-page';
 import {AddReview} from './pages/movie-page/add-review';
-import {ErrorPage} from './pages/error-page';
+import {ErrorPage} from './pages/error-page/error-page';
 import {PrivateRoute} from './private-route';
-import {Spinner} from './spinner';
-import {useAppSelector} from '../hooks';
-import {AppRoute, AuthorizationStatus} from '../consts';
+import {useAppDispatch} from '../hooks';
+import {AppRoute} from '../consts';
+import {useEffect} from 'react';
+import {checkAuthAction, fetchFilms} from '../store/api-actions';
+import {getToken} from '../services/token';
 
+const token = getToken();
 export const App = ()=> {
-  const authorizationStatus = useAppSelector((state) => state.updateStore.authorizationStatus);
-  const isAuthChecked = authorizationStatus !== AuthorizationStatus.Unknown;
-  const isFilmsDataLoading = useAppSelector((state) => state.updateStore.isLoading);
-  const allFilms = useAppSelector((state) => state.updateStore.films);
-  if (isFilmsDataLoading || !isAuthChecked) {
-    return (
-      <Spinner />
-    );
-  }
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchFilms());
+    if (token) {
+      dispatch(checkAuthAction());
+    }
+  }, [dispatch]);
   return(
     <HelmetProvider>
       <Routes>
@@ -29,16 +31,16 @@ export const App = ()=> {
           <Route index element={<MainPage />}/>
           <Route path={AppRoute.Login} element={<SignIn/>}/>
           <Route path={AppRoute.MyList} element={
-            <PrivateRoute authorizationStatus={authorizationStatus}>
+            <PrivateRoute>
               <MyList/>
             </PrivateRoute>
           }
           />
           <Route path={AppRoute.Film}>
-            <Route index element={<MoviePage id={allFilms[0]?.id ?? ''}/>}/>
+            <Route index element={<MoviePage />}/>
             <Route path={AppRoute.Review} element={<AddReview />}/>
           </Route>
-          <Route path={AppRoute.Player} element={<Player />}/>
+          <Route path={AppRoute.Player} element={<VideoPlayer />}/>
         </Route>
         <Route path={AppRoute.Other} element={<ErrorPage/>}/>
       </Routes>

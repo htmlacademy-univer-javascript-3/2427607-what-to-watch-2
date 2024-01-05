@@ -1,19 +1,10 @@
 import {v4 as uuid} from 'uuid';
-import {Comment} from '../../../../types/film';
-import {useAppDispatch, useAppSelector} from '../../../../hooks';
-import {fetchCommentsById} from '../../../../store/api-actions';
-import {Spinner} from '../../../spinner';
 import dateFormat from 'dateformat';
 
-export const Reviews = (props: {id: string}) => {
-  const comments: Comment[] = useAppSelector((state) => state.updateStore.commentsMap[props.id]);
-  const dispatch = useAppDispatch();
-  if (!comments) {
-    dispatch(fetchCommentsById(props.id));
-    return (
-      <Spinner />
-    );
-  }
+import {Comment} from '../../../../types/film';
+
+export const Reviews = ({comments}: {comments: Comment[]}) => {
+
   const firstRatings = comments.slice(0, comments.length / 2);
   const secondRatings = comments.slice(comments.length / 2, comments.length);
 

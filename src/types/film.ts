@@ -31,3 +31,17 @@ export type Comment = {
   comment: string;
   rating: number;
 };
+
+export enum RatingDescription {
+  Bad = 'Bad',
+  Normal = 'Normal',
+  Good = 'Good',
+  VeryGood = 'Very good',
+  Awesome = 'Awesome',
+}
+
+export enum PortionSizes {
+  FilmList = 8,
+  Favorites = 4,
+  Genres = 10,
+}

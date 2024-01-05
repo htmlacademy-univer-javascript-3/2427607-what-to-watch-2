@@ -1,6 +1,7 @@
 import {DetailsProps} from '../../../../types/tabs';
+import {memo} from 'react';
 
-export const Details = (props: DetailsProps) => (
+const Details = (props: DetailsProps) => (
   <div className="film-card__text film-card__row">
     <div className="film-card__text-col">
       <p className="film-card__details-item">
@@ -9,7 +10,9 @@ export const Details = (props: DetailsProps) => (
       </p>
       <p className="film-card__details-item">
         <strong className="film-card__details-name">Starring</strong>
-        <span className="film-card__details-value">{props.starring}</span>
+        <span className="film-card__details-value">
+          {props.starring.join(', ')}
+        </span>
       </p>
     </div>
 
@@ -29,3 +32,5 @@ export const Details = (props: DetailsProps) => (
     </div>
   </div>
 );
+
+export const MemoizedDetails = memo(Details);
