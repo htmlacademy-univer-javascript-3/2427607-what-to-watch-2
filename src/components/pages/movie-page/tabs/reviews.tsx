@@ -4,9 +4,14 @@ import dateFormat from 'dateformat';
 import {Comment} from '../../../../types/film';
 
 export const Reviews = ({comments}: {comments: Comment[]}) => {
-
-  const firstRatings = comments.slice(0, comments.length / 2);
-  const secondRatings = comments.slice(comments.length / 2, comments.length);
+  let firstRatings: Comment[];
+  let secondRatings: Comment[] = [];
+  if (comments.length === 1) {
+    firstRatings = comments;
+  } else {
+    firstRatings = comments.slice(0, comments.length / 2);
+    secondRatings = comments.slice(comments.length / 2, comments.length);
+  }
 
   return (
     <div className="film-card__reviews film-card__row">

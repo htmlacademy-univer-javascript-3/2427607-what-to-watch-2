@@ -19,7 +19,7 @@ export const FilmCardWrap = (props: Film & {favLength?: number})=> (
         </p>
 
         <div className="film-card__buttons">
-          <PlayButton className="btn btn--play film-card__button"/>
+          <PlayButton className="btn btn--play film-card__button" id={props.id}/>
           <AddToListButton favLength={props.favLength}/>
         </div>
       </div>
