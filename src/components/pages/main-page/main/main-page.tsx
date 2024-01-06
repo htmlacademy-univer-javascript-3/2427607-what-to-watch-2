@@ -21,10 +21,10 @@ export const MainPage = ()=> {
   const filmsByGenre = useAppSelector(getFilmsByGenre);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (filmsByGenre) {
-      dispatch(resetLength());
-    }
     dispatch(fetchPromoFilm());
+  }, [dispatch]);
+  useEffect(() => {
+    dispatch(resetLength());
   }, [dispatch, filmsByGenre]);
 
   return (
