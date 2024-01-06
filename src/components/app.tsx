@@ -38,7 +38,12 @@ export const App = ()=> {
           />
           <Route path={AppRoute.Film}>
             <Route index element={<MoviePage />}/>
-            <Route path={AppRoute.Review} element={<AddReview />}/>
+            <Route path={AppRoute.Review} element={
+              <PrivateRoute>
+                <AddReview />
+              </PrivateRoute>
+            }
+            />
           </Route>
           <Route path={AppRoute.Player} element={<Player />}/>
         </Route>
