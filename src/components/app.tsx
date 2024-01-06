@@ -17,6 +17,7 @@ import {getToken} from '../services/token';
 const token = getToken();
 export const App = ()=> {
   const dispatch = useAppDispatch();
+  console.log(token)
 
   useEffect(() => {
     dispatch(fetchFilms());
