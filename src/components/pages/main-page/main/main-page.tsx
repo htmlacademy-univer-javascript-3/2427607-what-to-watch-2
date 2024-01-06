@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import './main-page.css';
 import {Header} from '../../../header';
 import {Footer} from '../../../footer';
@@ -9,20 +9,23 @@ import {FilmList} from '../film-list';
 import {useAppDispatch, useAppSelector} from '../../../../hooks';
 import {useFavoriteFilms} from '../../../../hooks/use-favorite-films';
 import {fetchPromoFilm} from '../../../../store/api-actions';
-import {getFilmsByGenre} from '../../../../store/all-films-data/selectors';
+import {getFilmListPortion, getFilmsByGenre} from '../../../../store/all-films-data/selectors';
 import {getFilm} from '../../../../store/film-data/selectors';
 import {RequestPending} from '../../../pending-request/pending-request';
-import {PortionSizes} from '../../../../types/film';
+import {resetLength} from '../../../../store/all-films-data/all-films-data';
 
 export const MainPage = ()=> {
   const { favoriteFilms } = useFavoriteFilms();
   const filmData = useAppSelector(getFilm);
+  const filmListPortion = useAppSelector(getFilmListPortion);
   const filmsByGenre = useAppSelector(getFilmsByGenre);
   const dispatch = useAppDispatch();
   useEffect(() => {
+    if (filmsByGenre) {
+      dispatch(resetLength());
+    }
     dispatch(fetchPromoFilm());
-  }, [dispatch]);
-  const [clickCount, setCount] = useState(1);
+  }, [dispatch, filmsByGenre]);
 
   return (
     <RequestPending>
@@ -45,11 +48,9 @@ export const MainPage = ()=> {
 
             <GenresList/>
 
-            <FilmList films={filmsByGenre}/>
+            <FilmList films={filmListPortion}/>
 
-            <div className={filmsByGenre?.length < clickCount * PortionSizes.FilmList ? 'non_visible' : ''}>
-              <ShowMoreButton setCount={() => setCount(clickCount + 1)}/>
-            </div>
+            <ShowMoreButton />
           </section>
 
           <Footer/>

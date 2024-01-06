@@ -76,7 +76,7 @@ export const MoviePage = () => {
                   </p>
 
                   <div className="film-card__buttons">
-                    <PlayButton className="btn btn--play film-card__button"/>
+                    <PlayButton className="btn btn--play film-card__button" id={filmData.id}/>
                     <AddToListButton favLength={favoriteFilms?.length}/>
                     {isAuth && <Link to='review' className="btn film-card__button">Add review</Link>}
                   </div>

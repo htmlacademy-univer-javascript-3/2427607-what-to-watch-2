@@ -35,8 +35,9 @@ export const AddReview = ()=> {
             </div>
           </div>
         )}
-
-        <ReviewForm />
+        <div className="add-review">
+          {filmData && <ReviewForm id={filmData.id}/>}
+        </div>
 
       </section>
     </RequestPending>

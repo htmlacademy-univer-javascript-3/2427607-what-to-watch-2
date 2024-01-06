@@ -16,10 +16,10 @@ export enum AuthorizationStatus {
 
 export enum AppRoute {
   Login = '/login',
-  Film = 'films/:id',
+  Film = '/films/:id',
   Review = 'review',
-  Player = 'player/:id',
-  MyList = 'mylist',
+  Player = '/player/:id',
+  MyList = '/mylist',
   Main = '/',
   Other = '/*'
 }
