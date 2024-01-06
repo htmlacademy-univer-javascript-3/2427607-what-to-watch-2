@@ -7,7 +7,7 @@ import {redirectToRoute} from './action';
 import {AuthData} from '../types/auth-data';
 import {UserData} from '../types/user-data';
 import {dropToken, saveToken} from '../services/token';
-import {ReviewValues} from "../types/review";
+import {ReviewValues} from '../types/review';
 
 export const fetchFilms = createAsyncThunk<FilmCards[], undefined, {
   dispatch: AppDispatch;
@@ -92,18 +92,6 @@ export const fetchCommentsById = createAsyncThunk<Comment[], string, {
     return data;
   },
 );
-
-// export const addComment = createAsyncThunk<Comment, {comment: string; rating: number; id: string}, {
-//   dispatch: AppDispatch;
-//   state: State;
-//   extra: AxiosInstance;
-// }>(
-//   'data/addComment',
-//   async (_arg, {extra: api}) => {
-//     const {data} = await api.post<Comment>(`${APIRoute.Comments}/${_arg.id}`, _arg);
-//     return data;
-//   },
-// );
 
 export const addComment = createAsyncThunk<void, ReviewValues & { id: string }, {
   dispatch: AppDispatch;

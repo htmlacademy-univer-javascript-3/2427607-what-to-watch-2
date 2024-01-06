@@ -3,7 +3,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { ReviewFormLimitations, ReviewFormValues } from '../../../types/review.ts';
 import {addComment} from '../../../store/api-actions.ts';
 import { useAppDispatch } from '../../../hooks';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {AppRoute} from '../../../consts';
 
 const RATING_OPTIONS = Array.from({ length: ReviewFormLimitations.MaxRating }, (_, i) => i + 1).reverse();
@@ -13,7 +13,7 @@ const INITIAL_FORM_STATE: ReviewFormValues = {
   'review-text': '',
 };
 
-export const ReviewForm = () => {
+export const ReviewForm = ({id}: {id: string}) => {
   const {
     handleSubmit,
     control,
@@ -25,7 +25,6 @@ export const ReviewForm = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { id = '' } = useParams();
 
   function handleAddReview(data: ReviewFormValues) {
     setIsSubmitting(true);

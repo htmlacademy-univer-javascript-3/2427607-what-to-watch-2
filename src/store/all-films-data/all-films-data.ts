@@ -78,8 +78,7 @@ export const allFilmsData = createSlice({
       })
       .addCase(fetchFavoriteFilms.fulfilled, (state, action) => {
         state.favoriteFilms = action.payload;
-      })
-    ;
+      });
   }
 });
 export const { setSelectedGenre, showMoreFilms, resetLength } = allFilmsData.actions;
