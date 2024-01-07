@@ -1,6 +1,5 @@
-import axios, {AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
+import axios, {AxiosError, AxiosInstance, AxiosRequestConfig} from 'axios';
 import {getToken} from './token';
-import {StatusCodes} from 'http-status-codes';
 import {toast} from 'react-toastify';
 
 type DetailMessageType = {
@@ -10,14 +9,6 @@ type DetailMessageType = {
 
 const BASE_URL = 'https://13.design.pages.academy/wtw';
 const TIMEOUT = 5000;
-
-const StatusCodeMapping: Record<number, boolean> = {
-  [StatusCodes.BAD_REQUEST]: true,
-  [StatusCodes.UNAUTHORIZED]: true,
-  [StatusCodes.NOT_FOUND]: true
-};
-
-const shouldDisplayError = (response: AxiosResponse) => StatusCodeMapping[response.status];
 
 export const createAPI = (): AxiosInstance => {
   const api = axios.create({
@@ -40,8 +31,8 @@ export const createAPI = (): AxiosInstance => {
   api.interceptors.response.use(
     (response) => response,
     (error: AxiosError<DetailMessageType>) => {
-      if (error.response && shouldDisplayError(error.response)) {
-        const detailMessage = (error.response.data);
+      if (error.response) {
+        const detailMessage = error.response.data;
 
         toast.warn(detailMessage.message);
       }

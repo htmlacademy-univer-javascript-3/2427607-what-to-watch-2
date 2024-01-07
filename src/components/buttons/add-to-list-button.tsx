@@ -36,6 +36,6 @@ export const AddToListButton = (props: {favLength?: number})=> {
         </svg>
       )}
       <span>My list</span>
-      <span className="film-card__count">{props.favLength ?? 0}</span>
+      <span className="film-card__count">{Number(props.favLength)}</span>
     </button>);
 };

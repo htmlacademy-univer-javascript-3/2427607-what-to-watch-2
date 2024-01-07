@@ -5,7 +5,7 @@ import {
   fetchCommentsById,
   fetchFilm,
   fetchPromoFilm,
-  fetchSimilarFilms,
+  fetchSimilarFilms, logoutAction,
   setIsFavorite
 } from '../api-actions';
 
@@ -42,6 +42,9 @@ export const filmData = createSlice({
       })
       .addCase(setIsFavorite.fulfilled, (state, action) => {
         state.promoFilm = action.payload;
+      })
+      .addCase(logoutAction.fulfilled, (state) => {
+        state.promoFilm = state.promoFilm ? { ...state.promoFilm, isFavorite: false } : undefined;
       });
   }
 });

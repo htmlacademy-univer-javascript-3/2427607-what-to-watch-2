@@ -5,6 +5,7 @@ import {PauseButton} from '../../buttons/pause-button';
 import {useNavigate} from 'react-router-dom';
 import {AppRoute} from '../../../consts';
 import {TimeControls} from './time-controls';
+import {RequestPending} from '../../pending-request/pending-request';
 
 interface CrossBrowserDocument {
   exitFullscreen?: () => void;
@@ -78,45 +79,47 @@ export const Player = () => {
   };
 
   return (
-    <div className="player" ref={containerRef}>
-      {filmData && (
-        <>
-          <video
-            src={filmData.videoLink}
-            className="player__video"
-            poster={filmData.posterImage}
-            ref={playerRef}
-            onTimeUpdate={handleTimeUpdate}
-          >
-          </video>
+    <RequestPending>
+      <div className="player" ref={containerRef}>
+        {filmData && (
+          <>
+            <video
+              src={filmData.videoLink}
+              className="player__video"
+              poster={filmData.posterImage}
+              ref={playerRef}
+              onTimeUpdate={handleTimeUpdate}
+            >
+            </video>
 
-          <button
-            type="button"
-            className="player__exit"
-            onClick={() => navigate(AppRoute.Film.replace(':id', filmData.id))}
-          >
+            <button
+              type="button"
+              className="player__exit"
+              onClick={() => navigate(AppRoute.Film.replace(':id', filmData.id))}
+            >
             Exit
-          </button>
+            </button>
 
-          <div className="player__controls">
-            {playerRef.current && <TimeControls time={time} duration={Number(playerRef.current.duration)}/>}
+            <div className="player__controls">
+              {playerRef.current && <TimeControls time={time} duration={Number(playerRef.current.duration)}/>}
 
-            <div className="player__controls-row">
-              {isPlaying ?
-                <PauseButton handleClick={handlePause}/>
-                : <PlayButton className="player__play" handleClick={handlePlay}/>}
-              <div className="player__name">{filmData.name}</div>
+              <div className="player__controls-row">
+                {isPlaying ?
+                  <PauseButton handleClick={handlePause}/>
+                  : <PlayButton className="player__play" handleClick={handlePlay}/>}
+                <div className="player__name">{filmData.name}</div>
 
-              <button type="button" className="player__full-screen" onClick={handleFullScreenToggle}>
-                <svg viewBox="0 0 27 27" width="27" height="27">
-                  <use xlinkHref="#full-screen"></use>
-                </svg>
-                <span>Full screen</span>
-              </button>
+                <button type="button" className="player__full-screen" onClick={handleFullScreenToggle}>
+                  <svg viewBox="0 0 27 27" width="27" height="27">
+                    <use xlinkHref="#full-screen"></use>
+                  </svg>
+                  <span>Full screen</span>
+                </button>
+              </div>
             </div>
-          </div>
-        </>
-      )}
-    </div>
+          </>
+        )}
+      </div>
+    </RequestPending>
   );
 };

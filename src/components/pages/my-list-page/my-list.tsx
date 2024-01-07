@@ -22,8 +22,7 @@ export const MyList = ()=> {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           <FilmList films={favoriteFilms} onlyImage/>
         </section>
-
-        <Footer/>
+        <Footer />
       </div>
     </RequestPending>
   );
