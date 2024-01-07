@@ -1,5 +1,6 @@
 import {DetailsProps} from '../../../../types/tabs';
 import {memo} from 'react';
+import {formatRunTime} from '../../../../utils/formatPlayerTime';
 
 const Details = (props: DetailsProps) => (
   <div className="film-card__text film-card__row">
@@ -19,7 +20,7 @@ const Details = (props: DetailsProps) => (
     <div className="film-card__text-col">
       <p className="film-card__details-item">
         <strong className="film-card__details-name">Run Time</strong>
-        <span className="film-card__details-value">{props.runTime}</span>
+        <span className="film-card__details-value">{formatRunTime(props.runTime)}</span>
       </p>
       <p className="film-card__details-item">
         <strong className="film-card__details-name">Genre</strong>

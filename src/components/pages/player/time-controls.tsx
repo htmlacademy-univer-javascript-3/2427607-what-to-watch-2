@@ -1,4 +1,4 @@
-import {formatPlayerTime} from '../../../utils/format-player-time';
+import {formatPlayerTime} from '../../../utils/formatPlayerTime';
 
 export interface TimeControlsProps {
   time: number;

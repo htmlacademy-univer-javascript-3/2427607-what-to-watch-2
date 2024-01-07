@@ -69,7 +69,7 @@ export const MoviePage = () => {
 
               <div className="film-card__wrap">
                 <div className="film-card__desc">
-                  <h2 className="film-card__title"> {filmData.name} </h2>
+                  <h2 className="film-card__title">{filmData.name}</h2>
                   <p className="film-card__meta">
                     <span className="film-card__genre">{filmData.genre}</span>
                     <span className="film-card__year">{filmData.released}</span>

@@ -2,6 +2,7 @@ import {v4 as uuid} from 'uuid';
 import dateFormat from 'dateformat';
 
 import {Comment} from '../../../../types/film';
+import {DateFormats, formatDate} from "../../../../utils/formatPlayerTime";
 
 export const Reviews = ({comments}: {comments: Comment[]}) => {
   let firstRatings: Comment[];
@@ -27,8 +28,8 @@ export const Reviews = ({comments}: {comments: Comment[]}) => {
 
                       <footer className="review__details">
                         <cite className="review__author">{comment.user}</cite>
-                        <time className="review__date" dateTime="2016-12-24">
-                          {dateFormat(new Date(comment.date), 'mediumDate')}
+                        <time className="review__date" dateTime={formatDate(comment.date, DateFormats.Short)}>
+                          {formatDate(comment.date, DateFormats.Standard)}
                         </time>
                       </footer>
                     </blockquote>

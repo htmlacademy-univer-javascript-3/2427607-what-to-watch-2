@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {ALL_GENRES, NameSpace} from '../../consts';
 import {FilmCards, PortionSizes} from '../../types/film';
-import {fetchFavoriteFilms, fetchFilms} from '../api-actions';
+import {fetchFavoriteFilms, fetchFilms, logoutAction} from '../api-actions';
 
 type initialState = {
   activeGenre: string;
@@ -78,6 +78,9 @@ export const allFilmsData = createSlice({
       })
       .addCase(fetchFavoriteFilms.fulfilled, (state, action) => {
         state.favoriteFilms = action.payload;
+      })
+      .addCase(logoutAction.fulfilled, (state) => {
+        state.favoriteFilms = [];
       });
   }
 });
