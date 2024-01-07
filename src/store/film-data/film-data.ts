@@ -44,7 +44,7 @@ export const filmData = createSlice({
         state.promoFilm = action.payload;
       })
       .addCase(logoutAction.fulfilled, (state) => {
-        state.film = state.film ? { ...state.film, isFavorite: false } : undefined;
+        state.promoFilm = state.promoFilm ? { ...state.promoFilm, isFavorite: false } : undefined;
       });
   }
 });

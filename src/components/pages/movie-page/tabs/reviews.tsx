@@ -1,8 +1,7 @@
 import {v4 as uuid} from 'uuid';
-import dateFormat from 'dateformat';
 
 import {Comment} from '../../../../types/film';
-import {DateFormats, formatDate} from "../../../../utils/formatPlayerTime";
+import {DateFormats, formatDate} from '../../../../utils/format-time';
 
 export const Reviews = ({comments}: {comments: Comment[]}) => {
   let firstRatings: Comment[];

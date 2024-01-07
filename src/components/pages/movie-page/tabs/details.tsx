@@ -1,6 +1,6 @@
 import {DetailsProps} from '../../../../types/tabs';
 import {memo} from 'react';
-import {formatRunTime} from '../../../../utils/formatPlayerTime';
+import {formatRunTime} from '../../../../utils/format-time';
 
 const Details = (props: DetailsProps) => (
   <div className="film-card__text film-card__row">
