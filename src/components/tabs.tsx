@@ -19,7 +19,7 @@ const TABS = [{
 
 type TabsProps = {
   activeTab: number;
-  setActiveTab: (tab: number) => void;
+  onSetActiveTab: (tab: number) => void;
 };
 
 export const Tabs = (props: TabsProps) => (
@@ -30,7 +30,7 @@ export const Tabs = (props: TabsProps) => (
           <li
             className={`film-nav__item ${props.activeTab === tab.key ? 'film-nav__item--active' : ''}`}
             key={tab.key}
-            onClick={() => props.setActiveTab(tab.key)}
+            onClick={() => props.onSetActiveTab(tab.key)}
           >
             <Link to={tab.link} className="film-nav__link"> { tab.name } </Link>
           </li>
