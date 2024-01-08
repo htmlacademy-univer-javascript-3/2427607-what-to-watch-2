@@ -3,13 +3,15 @@ import {UserProcess} from '../../types/state';
 import {checkAuthAction, loginAction, logoutAction} from '../api-actions';
 import {AuthorizationStatus, NameSpace} from '../../consts';
 import {UserData} from '../../types/user-data';
+import {getToken} from '../../services/token';
 
+const token = getToken();
 const initialState: UserProcess = {
   name: '',
   avatarUrl: '',
   email: '',
   token: '',
-  authorizationStatus: AuthorizationStatus.Unknown,
+  authorizationStatus: token ? AuthorizationStatus.Unknown : AuthorizationStatus.NoAuth,
 };
 
 function authorize(state: UserProcess, action: PayloadAction<UserData>) {
