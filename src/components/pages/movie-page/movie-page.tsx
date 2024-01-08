@@ -93,7 +93,7 @@ export const MoviePage = () => {
                 </div>
 
                 <div className="film-card__desc">
-                  <Tabs activeTab={activeTab} setActiveTab={setActiveTab}/>
+                  <Tabs activeTab={activeTab} onSetActiveTab={setActiveTab}/>
                   { filmData && getContentByType() }
                 </div>
               </div>
